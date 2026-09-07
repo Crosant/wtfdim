@@ -34,6 +34,8 @@ interface AppState {
   focusModalHeight: number;
   isFocusModalMaximized: boolean;
   isTankPrioOpen: boolean;
+  isNotesCollapsed: boolean;
+  activeFloatingNote?: { mechanic: string; note: string };
 }
 
 // Initialize application state from URL query parameters if present
@@ -73,6 +75,8 @@ const state: AppState = {
   focusModalHeight: 760,
   isFocusModalMaximized: false,
   isTankPrioOpen: false,
+  isNotesCollapsed: urlParams.get('notes') === 'expanded' ? false : true,
+  activeFloatingNote: undefined,
 };
 
 // Synchronizes the application state with the browser URL query string without reloading
@@ -108,6 +112,13 @@ function syncUrlParams(): void {
     url.searchParams.set('q', state.searchQuery.trim());
   } else {
     url.searchParams.delete('q');
+  }
+
+  // Notes collapsed/expanded status
+  if (!state.isNotesCollapsed) {
+    url.searchParams.set('notes', 'expanded');
+  } else {
+    url.searchParams.delete('notes');
   }
 
   window.history.replaceState({}, '', url.toString());
@@ -146,6 +157,7 @@ function renderApp(): void {
           currentPhase: state.currentPhase,
           searchQuery: state.searchQuery,
           partyComp: state.partyComp,
+          isNotesCollapsed: state.isNotesCollapsed,
           onJobChange: () => {},
           onPositionChange: () => {},
           onPlanChange: () => {},
@@ -183,6 +195,7 @@ function renderApp(): void {
             searchQuery: state.searchQuery,
             partyComp: state.partyComp,
             currentPlanId: state.currentPlanId,
+            isNotesCollapsed: state.isNotesCollapsed,
           })}
         </section>
 
@@ -227,6 +240,21 @@ function renderApp(): void {
       isMaximized: state.isFocusModalMaximized,
       onClose: () => {},
     })}
+
+    ${state.activeFloatingNote ? `
+      <div class="floating-note-toast" id="floating-note-toast">
+        <div class="floating-note-header">
+          <div class="floating-note-title">
+            <span>💬</span>
+            <span>${state.activeFloatingNote.mechanic}</span>
+          </div>
+          <button class="floating-note-close" id="close-floating-note-btn" aria-label="Close note">&times;</button>
+        </div>
+        <div class="floating-note-body">
+          ${state.activeFloatingNote.note}
+        </div>
+      </div>
+    ` : ''}
 
     <footer class="site-footer">
       <div class="footer-inner">
@@ -608,6 +636,83 @@ function attachEventListeners(): void {
     });
   }
 
+  // ==========================================
+  // COLLAPSIBLE NOTES COLUMN EVENT HANDLERS
+  // ==========================================
+  const toggleNotesBtn = document.getElementById('toggle-notes-btn');
+  if (toggleNotesBtn) {
+    toggleNotesBtn.addEventListener('click', () => {
+      state.isNotesCollapsed = !state.isNotesCollapsed;
+      syncUrlParams();
+      renderApp();
+    });
+  }
+
+  const thToggleNotesBtn = document.getElementById('th-toggle-notes-btn');
+  if (thToggleNotesBtn) {
+    thToggleNotesBtn.addEventListener('click', () => {
+      state.isNotesCollapsed = !state.isNotesCollapsed;
+      syncUrlParams();
+      renderApp();
+    });
+  }
+
+  const qcvToggleNotesBtn = document.getElementById('qcv-toggle-notes-btn');
+  if (qcvToggleNotesBtn) {
+    qcvToggleNotesBtn.addEventListener('click', () => {
+      state.isNotesCollapsed = !state.isNotesCollapsed;
+      syncUrlParams();
+      renderApp();
+    });
+  }
+
+  const qcvThToggleNotesBtn = document.getElementById('qcv-th-toggle-notes-btn');
+  if (qcvThToggleNotesBtn) {
+    qcvThToggleNotesBtn.addEventListener('click', () => {
+      state.isNotesCollapsed = !state.isNotesCollapsed;
+      syncUrlParams();
+      renderApp();
+    });
+  }
+
+  // Floating note modal/toast triggers
+  const notePillBtns = document.querySelectorAll('.note-pill-btn');
+  notePillBtns.forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const target = btn as HTMLElement;
+      const note = target.getAttribute('data-note') || '';
+      const mech = target.getAttribute('data-mech') || 'Mechanic Note';
+      if (note) {
+        state.activeFloatingNote = { mechanic: mech, note };
+        renderApp();
+      }
+    });
+  });
+
+  const closeFloatingNoteBtn = document.getElementById('close-floating-note-btn');
+  if (closeFloatingNoteBtn) {
+    closeFloatingNoteBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      state.activeFloatingNote = undefined;
+      renderApp();
+    });
+  }
+
+  if (state.activeFloatingNote) {
+    const handleOutsideClick = (e: MouseEvent) => {
+      const toast = document.getElementById('floating-note-toast');
+      if (toast && !toast.contains(e.target as Node)) {
+        state.activeFloatingNote = undefined;
+        document.removeEventListener('click', handleOutsideClick);
+        renderApp();
+      }
+    };
+    setTimeout(() => {
+      document.addEventListener('click', handleOutsideClick);
+    }, 50);
+  }
+
   if (state.isFocusModalOpen) {
     setupFocusModalResize();
   }
@@ -750,6 +855,7 @@ window.addEventListener('popstate', () => {
   const phaseNum = parseInt(params.get('phase') || '0', 10);
   state.currentPhase = (!isNaN(phaseNum) && phaseNum >= 0 && phaseNum <= 5) ? phaseNum : 0;
   state.searchQuery = params.get('q') || '';
+  state.isNotesCollapsed = params.get('notes') === 'expanded' ? false : true;
 
   renderApp();
 });

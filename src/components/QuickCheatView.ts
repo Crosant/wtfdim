@@ -14,6 +14,7 @@ export interface QuickCheatViewProps {
   currentPhase: number;
   searchQuery: string;
   partyComp: PartyComposition;
+  isNotesCollapsed?: boolean;
   onJobChange: (job: JobId) => void;
   onPositionChange: (pos: PositionSlot) => void;
   onPlanChange: (planId: string) => void;
@@ -22,6 +23,7 @@ export interface QuickCheatViewProps {
 }
 
 export function renderQuickCheatView(props: QuickCheatViewProps): string {
+  const isNotesCollapsed = props.isNotesCollapsed ?? true;
   const currentMeta = JOB_REGISTRY[props.selectedJob];
   const availablePositions = getAvailablePositionsForJob(props.selectedJob);
   const mechPhaseMap = new Map(DMU_TIMELINE.map(m => [m.id, m.phase]));
@@ -213,7 +215,11 @@ export function renderQuickCheatView(props: QuickCheatViewProps): string {
                 </div>
               </div>
             </td>
-            <td class="cell-notes">${item.notes || '—'}</td>
+            <td class="cell-notes ${isNotesCollapsed ? 'notes-collapsed' : ''}" style="${isNotesCollapsed ? 'text-align: center; padding: 0.5rem 0.2rem;' : ''}">
+              ${isNotesCollapsed
+                ? (item.notes ? `<button class="note-pill-btn" title="${(item.notes || '').replace(/"/g, '&quot;')}" data-note="${(item.notes || '').replace(/"/g, '&quot;')}" data-mech="${item.mechanicName.replace(/"/g, '&quot;')}">💬</button>` : '<span style="color: var(--text-muted); opacity: 0.25;">—</span>')
+                : (item.notes || '—')}
+            </td>
           </tr>
         `;
       }).join('')
@@ -306,6 +312,9 @@ export function renderQuickCheatView(props: QuickCheatViewProps): string {
             <span class="plan-info-authors">&bull; Sourced by ${currentPlan.authors}</span>
           </div>
           <div class="plan-info-right">
+            <button id="qcv-toggle-notes-btn" class="btn btn-sm ${isNotesCollapsed ? 'btn-secondary' : 'btn-primary'}" title="${isNotesCollapsed ? 'Expand Notes & Timing column' : 'Collapse Notes & Timing column'}">
+              <span>${isNotesCollapsed ? '💬 Expand Notes' : '💬 Collapse Notes'}</span>
+            </button>
             <a href="${currentPlan.sourceUrl}" target="_blank" rel="noopener noreferrer" class="plan-source-link" title="Open original reference document">
               Original Reference &nearr;
             </a>
@@ -313,19 +322,26 @@ export function renderQuickCheatView(props: QuickCheatViewProps): string {
         </div>
 
         <div class="table-responsive">
-          <table class="mit-table qcv-table">
+          <table class="mit-table qcv-table ${isNotesCollapsed ? 'notes-collapsed' : ''}">
             <colgroup>
               <col style="width: 72px;">
-              <col style="width: 240px;">
-              <col style="width: 380px;">
-              <col style="width: auto;">
+              <col style="width: 230px;">
+              <col style="width: ${isNotesCollapsed ? 'auto' : '400px'};">
+              <col style="width: ${isNotesCollapsed ? '54px' : 'auto'};">
             </colgroup>
             <thead>
               <tr>
                 <th style="width: 72px;">Time</th>
-                <th style="width: 240px;">Mechanic</th>
-                <th style="width: 380px;">Ability To Press</th>
-                <th>Notes & Timing</th>
+                <th style="width: 230px;">Mechanic</th>
+                <th style="width: ${isNotesCollapsed ? 'auto' : '400px'};">Ability To Press</th>
+                <th style="width: ${isNotesCollapsed ? '54px' : 'auto'}; ${isNotesCollapsed ? 'text-align: center;' : ''}">
+                  ${isNotesCollapsed
+                    ? `<button id="qcv-th-toggle-notes-btn" class="notes-toggle-icon-btn" title="Expand Notes & Timing column">💬</button>`
+                    : `<div style="display: flex; align-items: center; justify-content: space-between;">
+                        <span>Notes & Timing</span>
+                        <button id="qcv-th-toggle-notes-btn" class="notes-toggle-icon-btn" title="Collapse Notes & Timing column" style="font-size: 0.72rem; padding: 0.1rem 0.35rem;">⤡</button>
+                      </div>`}
+                </th>
               </tr>
             </thead>
             <tbody>

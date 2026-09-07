@@ -1902,3 +1902,123 @@ tr:first-child.phase-divider-row .phase-divider-banner {
   color: var(--text-primary);
 }
 
+/* ==========================================
+   COLLAPSIBLE NOTES & TIMING COLUMN
+   ========================================== */
+.mit-table.notes-collapsed .cell-notes {
+  text-align: center;
+  padding: 0.45rem 0.2rem;
+}
+
+.note-pill-btn {
+  background: rgba(56, 189, 248, 0.12);
+  border: 1px solid rgba(56, 189, 248, 0.35);
+  border-radius: var(--radius-sm);
+  color: #7dd3fc;
+  font-size: 0.82rem;
+  padding: 0.2rem 0.45rem;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+}
+
+.note-pill-btn:hover {
+  background: rgba(56, 189, 248, 0.28);
+  border-color: #38bdf8;
+  color: #ffffff;
+  transform: scale(1.08);
+  box-shadow: 0 0 10px rgba(56, 189, 248, 0.4);
+}
+
+.notes-toggle-icon-btn {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  color: var(--text-secondary);
+  cursor: pointer;
+  padding: 0.18rem 0.45rem;
+  font-size: 0.8rem;
+  transition: all 0.15s ease;
+  line-height: 1;
+}
+
+.notes-toggle-icon-btn:hover {
+  background: rgba(56, 189, 248, 0.2);
+  border-color: var(--accent-blue);
+  color: #ffffff;
+}
+
+/* Floating Note Toast / Popover */
+.floating-note-toast {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  max-width: 440px;
+  min-width: 320px;
+  background: linear-gradient(135deg, #171e2e 0%, #0f172a 100%);
+  border: 1px solid rgba(56, 189, 248, 0.45);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6), 0 0 20px rgba(56, 189, 248, 0.15);
+  border-radius: var(--radius-md);
+  padding: 0.95rem 1.15rem;
+  z-index: 9999;
+  backdrop-filter: blur(12px);
+  animation: slideInUp 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.floating-note-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+  padding-bottom: 0.4rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  gap: 0.5rem;
+}
+
+.floating-note-title {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 0.88rem;
+  color: var(--accent-blue);
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+}
+
+.floating-note-close {
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  font-size: 1.25rem;
+  cursor: pointer;
+  padding: 0 0.25rem;
+  line-height: 1;
+  transition: color 0.15s ease;
+}
+
+.floating-note-close:hover {
+  color: var(--text-primary);
+}
+
+.floating-note-body {
+  font-size: 0.84rem;
+  color: var(--text-secondary);
+  line-height: 1.45;
+  word-break: break-word;
+}
+
+

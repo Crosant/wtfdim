@@ -10,6 +10,7 @@ interface MitMatrixProps {
   searchQuery: string;
   partyComp: PartyComposition;
   currentPlanId?: string;
+  isNotesCollapsed?: boolean;
 }
 
 function getTagClass(type: DamageType): string {
@@ -50,6 +51,7 @@ function renderActionStack(actions: ResolvedAction[], partyJobs: Set<string>): s
 }
 
 export function renderMitMatrix(props: MitMatrixProps): string {
+  const isNotesCollapsed = props.isNotesCollapsed ?? true;
   const partyJobSet = new Set(Object.values(props.partyComp));
 
   // Map mechanic id to phase number
@@ -140,6 +142,8 @@ export function renderMitMatrix(props: MitMatrixProps): string {
     const healerActions = partyHealerActions.length > 0 ? partyHealerActions : allHealerActions;
     const dpsActions = resolvedActions.filter(a => !['PLD', 'WAR', 'DRK', 'GNB', 'WHM', 'AST', 'SCH', 'SGE'].includes(a.job));
 
+    const escapedNotes = (row.notes || '').replace(/"/g, '&quot;');
+
     return `
       ${dividerHtml}
       <tr>
@@ -156,7 +160,11 @@ export function renderMitMatrix(props: MitMatrixProps): string {
         <td>${renderActionStack(tankActions, partyJobSet)}</td>
         <td>${renderActionStack(healerActions, partyJobSet)}</td>
         <td>${renderActionStack(dpsActions, partyJobSet)}</td>
-        <td class="cell-notes">${row.notes || '—'}</td>
+        <td class="cell-notes ${isNotesCollapsed ? 'notes-collapsed' : ''}" style="${isNotesCollapsed ? 'text-align: center; padding: 0.5rem 0.2rem;' : ''}">
+          ${isNotesCollapsed
+            ? (row.notes ? `<button class="note-pill-btn" title="${escapedNotes}" data-note="${escapedNotes}" data-mech="${row.mechanicName.replace(/"/g, '&quot;')}">💬</button>` : '<span style="color: var(--text-muted); opacity: 0.25;">—</span>')
+            : (row.notes || '—')}
+        </td>
       </tr>
     `;
   }).join('');
@@ -172,29 +180,39 @@ export function renderMitMatrix(props: MitMatrixProps): string {
           <span class="plan-info-authors">&bull; Sourced by ${currentPlan.authors}</span>
         </div>
         <div class="plan-info-right">
+          <button id="toggle-notes-btn" class="btn btn-sm ${isNotesCollapsed ? 'btn-secondary' : 'btn-primary'}" title="${isNotesCollapsed ? 'Expand Notes & Timing column' : 'Collapse Notes & Timing column'}">
+            <span>${isNotesCollapsed ? '💬 Expand Notes' : '💬 Collapse Notes'}</span>
+          </button>
           <a href="${currentPlan.sourceUrl}" target="_blank" rel="noopener noreferrer" class="plan-source-link" title="Open original reference document">
             Original Reference &nearr;
           </a>
         </div>
       </div>
       <div class="table-responsive">
-        <table class="mit-table">
+        <table class="mit-table ${isNotesCollapsed ? 'notes-collapsed' : ''}">
           <colgroup>
             <col style="width: 72px;">
             <col style="width: 210px;">
-            <col style="width: 26%;">
-            <col style="width: 28%;">
-            <col style="width: 19%;">
-            <col style="width: 27%;">
+            <col style="width: ${isNotesCollapsed ? '35%' : '26%'};">
+            <col style="width: ${isNotesCollapsed ? '38%' : '28%'};">
+            <col style="width: ${isNotesCollapsed ? '27%' : '19%'};">
+            <col style="width: ${isNotesCollapsed ? '54px' : '27%'};">
           </colgroup>
           <thead>
             <tr>
               <th style="width: 72px;">Time</th>
               <th style="width: 210px;">Mechanic</th>
-              <th style="width: 26%;">Tank Defensives</th>
-              <th style="width: 28%;">Healer Defensives</th>
-              <th style="width: 19%;">DPS Defensives</th>
-              <th style="width: 27%;">Notes & Timing</th>
+              <th style="width: ${isNotesCollapsed ? '35%' : '26%'};">Tank Defensives</th>
+              <th style="width: ${isNotesCollapsed ? '38%' : '28%'};">Healer Defensives</th>
+              <th style="width: ${isNotesCollapsed ? '27%' : '19%'};">DPS Defensives</th>
+              <th style="width: ${isNotesCollapsed ? '54px' : '27%'}; ${isNotesCollapsed ? 'text-align: center;' : ''}">
+                ${isNotesCollapsed
+                  ? `<button id="th-toggle-notes-btn" class="notes-toggle-icon-btn" title="Expand Notes & Timing column">💬</button>`
+                  : `<div style="display: flex; align-items: center; justify-content: space-between;">
+                      <span>Notes & Timing</span>
+                      <button id="th-toggle-notes-btn" class="notes-toggle-icon-btn" title="Collapse Notes & Timing column" style="font-size: 0.72rem; padding: 0.1rem 0.35rem;">⤡</button>
+                    </div>`}
+              </th>
             </tr>
           </thead>
           <tbody>
