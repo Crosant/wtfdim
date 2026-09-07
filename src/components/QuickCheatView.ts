@@ -4,6 +4,7 @@ import { DMU_TIMELINE, DMU_PHASE_CONFIG } from '../data/dmuTimeline';
 import { DMU_PLAN_VARIANTS } from '../data/dmuPlans';
 import { actionAppliesToJob, getSkillNameForJob } from '../utils/actionResolver';
 import { getAvailablePositionsForJob, getPositionLabel } from '../utils/positionHelper';
+import { renderTankPriorityCard } from './TankPriorityCard';
 
 export interface QuickCheatViewProps {
   selectedJob: JobId;
@@ -292,6 +293,9 @@ export function renderQuickCheatView(props: QuickCheatViewProps): string {
           ${phaseNavTabs}
         </div>
       </nav>
+
+      <!-- Tank Priority Protocol Card (Prominently rendered for tanks) -->
+      ${['WAR', 'PLD', 'DRK', 'GNB'].includes(props.selectedJob) ? renderTankPriorityCard({ partyComp: props.partyComp, activeJob: props.selectedJob }) : ''}
 
       <!-- Main Timeline Card -->
       <div class="matrix-card">

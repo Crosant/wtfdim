@@ -447,6 +447,18 @@ const LPDU_ROWS: PlanRow[] = [
     notes: 'Heavy raidwide immediately following the Forsaken resolution.'
   },
   {
+    mechanicId: 'dmu-p2-11b',
+    timestamp: '02:44',
+    mechanicName: 'Wings of Destruction (Halfroom)',
+    damageType: 'magic',
+    rawDamage: 'Halfroom Cleave',
+    actions: [
+      { roleSlot: 'mtBusterMit', skill: 'Rampart', target: 'Self', timingNote: 'End of castbar' },
+      { roleSlot: 'otBusterMit', skill: 'Rampart', target: 'Self', timingNote: 'End of castbar' },
+    ],
+    notes: 'Pre-pop Rampart at end of first Wings (halfroom) cast. Wall Priority: PLD > WAR > DRK > GNB (wall tank takes wall so co-tank maintains full uptime).'
+  },
+  {
     mechanicId: 'dmu-p2-12',
     timestamp: '02:54',
     mechanicName: 'Wings of Destruction',
@@ -603,6 +615,21 @@ const LPDU_ROWS: PlanRow[] = [
     notes: 'Post-knockback cyclone ticks.'
   },
   {
+    mechanicId: 'dmu-p3-07b',
+    timestamp: '02:35',
+    mechanicName: 'Thunder III (2nd Set)',
+    damageType: 'magic',
+    rawDamage: '700,000 x2',
+    actions: [
+      { roleSlot: 'mtInvuln', skill: 'MT Invulnerability', target: 'Self' },
+      { job: 'WHM', skill: 'Benison + Tetra MT' },
+      { job: 'AST', skill: 'CI MT' },
+      { job: 'SCH', skill: 'Excog MT' },
+      { job: 'SGE', skill: 'Taurochole MT' },
+    ],
+    notes: 'Tankbuster on Chaos tank. Chaos Tank (WAR > DRK > GNB > PLD / MT) uses Invulnerability.'
+  },
+  {
     mechanicId: 'dmu-p3-08',
     timestamp: '02:43',
     mechanicName: 'The Decisive Battle',
@@ -615,6 +642,20 @@ const LPDU_ROWS: PlanRow[] = [
       { roleSlot: 'caster', skill: 'Addle', timingNote: 'On cast' },
     ],
     notes: 'Decisive Battle cast leading into Accretions.'
+  },
+  {
+    mechanicId: 'dmu-p3-08b',
+    timestamp: '02:52',
+    mechanicName: 'Thunder III (3rd Set)',
+    damageType: 'magic',
+    rawDamage: '700,000 x2',
+    actions: [
+      { roleSlot: 'mtBusterMit', skill: '40% Mit + Short CD', target: 'Self' },
+      { roleSlot: 'otBusterMit', skill: '40% Mit + Short CD', target: 'Self' },
+      { roleSlot: 'mtSupport', skill: 'MT Buddy Mit', target: 'OT' },
+      { roleSlot: 'otSupport', skill: 'OT Buddy Mit', target: 'MT' },
+    ],
+    notes: 'Double tankbuster. Exdeath tank takes hit 1, Chaos tank takes hit 2. Both tanks mitigate with 40% (120s) + Short Mit.'
   },
   {
     mechanicId: 'dmu-p3-09',
@@ -647,6 +688,21 @@ const LPDU_ROWS: PlanRow[] = [
       { job: 'SGE', skill: 'Kerachole + E.Prog' },
     ],
     notes: 'First beam blast during tether assignments.'
+  },
+  {
+    mechanicId: 'dmu-p3-10b',
+    timestamp: '03:34',
+    mechanicName: 'Thunder III (4th Set)',
+    damageType: 'magic',
+    rawDamage: '700,000 x2',
+    actions: [
+      { roleSlot: 'otInvuln', skill: 'OT Invulnerability', target: 'Self' },
+      { job: 'WHM', skill: 'Benison + Tetra OT' },
+      { job: 'AST', skill: 'CI OT' },
+      { job: 'SCH', skill: 'Excog OT' },
+      { job: 'SGE', skill: 'Taurochole OT' },
+    ],
+    notes: 'Tankbuster on Exdeath tank. Exdeath Tank (PLD > GNB > DRK > WAR / OT) uses Invulnerability.'
   },
   {
     mechanicId: 'dmu-p3-11',
@@ -745,6 +801,18 @@ const LPDU_ROWS: PlanRow[] = [
       { job: 'SGE', skill: 'Kerachole + Zoe Pneuma + Ixochole' },
     ],
     notes: 'Lethal check: everyone must be topped to 100% max HP before White Hole resolves.'
+  },
+  {
+    mechanicId: 'dmu-p3-17b',
+    timestamp: '05:09',
+    mechanicName: 'Black Holes IV (10th Tether Set)',
+    damageType: 'magic',
+    rawDamage: 'Tether Damage',
+    actions: [
+      { roleSlot: 'mtBusterMit', skill: '40% Mit + Short CD', target: 'Self' },
+      { roleSlot: 'otBusterMit', skill: '40% Mit + Short CD', target: 'Self' },
+    ],
+    notes: '10th tether set (Look Upon Me and Despair). Both tanks mitigate with 40% + Short Mit.'
   },
   {
     mechanicId: 'dmu-p3-18',
@@ -986,6 +1054,20 @@ const LPDU_ROWS: PlanRow[] = [
     notes: 'Raidwide + tankbuster sequence.'
   },
   {
+    mechanicId: 'dmu-p5-04b',
+    timestamp: '01:26',
+    mechanicName: 'Flare / Holy 1 (Invuln 1)',
+    damageType: 'magic',
+    rawDamage: '1,300,000 / 440,000',
+    actions: [
+      { roleSlot: 'mtInvuln', skill: 'Invulnerability 1', target: 'Self', timingNote: 'Press just before Flare/Holy expires' },
+      { roleSlot: 'mtProvoke', skill: 'Provoke', target: 'Boss', timingNote: 'Provoke on debuff application' },
+      { roleSlot: 'otBusterMit', skill: 'Rampart + Short Mit', target: 'Self' },
+      { roleSlot: 'otSupport', skill: 'OT Buddy Mit', target: 'MT' },
+    ],
+    notes: 'Invuln 1 Tank (WAR > DRK > GNB > PLD) invulns and Provokes on debuff application to solo Fell Forces 2 autos. Tank 2 holds aggro with Rampart + Short Mit so they do not receive Holy.'
+  },
+  {
     mechanicId: 'dmu-p5-05',
     timestamp: '01:31',
     mechanicName: 'Fell Forces 2 (2x Tank Autos)',
@@ -1078,6 +1160,20 @@ const LPDU_ROWS: PlanRow[] = [
       { job: 'SGE', skill: 'Early Kerachole + E.Prog + Haima non-invuln' },
     ],
     notes: 'Penultimate raidwide sequence.'
+  },
+  {
+    mechanicId: 'dmu-p5-10b',
+    timestamp: '02:58',
+    mechanicName: 'Flare / Holy 2 (Invuln 2)',
+    damageType: 'magic',
+    rawDamage: '1,300,000 / 440,000',
+    actions: [
+      { roleSlot: 'otInvuln', skill: 'Invulnerability 2', target: 'Self', timingNote: 'Press just before Flare/Holy expires' },
+      { roleSlot: 'otProvoke', skill: 'Provoke', target: 'Boss', timingNote: 'Provoke on debuff application' },
+      { roleSlot: 'mtBusterMit', skill: 'Rampart + 40% Mit', target: 'Self' },
+      { roleSlot: 'mtSupport', skill: 'MT Buddy Mit', target: 'OT' },
+    ],
+    notes: 'Invuln 2 Tank (PLD > GNB > DRK > WAR) invulns and Provokes on debuff application to solo Fell Forces 4 autos 1 & 2. Tank 1 mitigates with Rampart + 40%. Auto 3 is shared as invuln expires.'
   },
   {
     mechanicId: 'dmu-p5-11',
@@ -1483,6 +1579,13 @@ const IKUYA_OVERRIDES: Record<string, { actions?: PlanRow['actions']; notes?: st
     ],
     notes: 'Ikuya: Light of Judgment raidwide with Holos returning off cooldown.'
   },
+  'dmu-p2-11b': {
+    actions: [
+      { roleSlot: 'mtBusterMit', skill: 'Rampart', target: 'Self', timingNote: 'End of castbar' },
+      { roleSlot: 'otBusterMit', skill: 'Rampart', target: 'Self', timingNote: 'End of castbar' },
+    ],
+    notes: 'Ikuya: Rampart at end of first Wings of Destruction (halfroom) cast, 40% two GCDs later. Wall Priority: PLD > WAR > DRK > GNB.'
+  },
   'dmu-p2-12': {
     actions: [
       { roleSlot: 'mtReprisal', skill: 'Reprisal (MT)' },
@@ -1562,6 +1665,25 @@ const IKUYA_OVERRIDES: Record<string, { actions?: PlanRow['actions']; notes?: st
     ],
     notes: 'Ikuya: Tank LB3 on "W" of Vacuum Wave.'
   },
+  'dmu-p3-07b': {
+    actions: [
+      { roleSlot: 'mtInvuln', skill: 'MT Invulnerability', target: 'Self' },
+      { job: 'WHM', skill: 'Benison + Tetra MT' },
+      { job: 'AST', skill: 'CI MT' },
+      { job: 'SCH', skill: 'Excog MT' },
+      { job: 'SGE', skill: 'Taurochole MT' },
+    ],
+    notes: 'Ikuya: Thunder III Set 2. Chaos Tank (WAR > DRK > GNB > PLD / MT) Invulnerability.'
+  },
+  'dmu-p3-08b': {
+    actions: [
+      { roleSlot: 'mtBusterMit', skill: '40% Mit + Short CD', target: 'Self' },
+      { roleSlot: 'otBusterMit', skill: '40% Mit + Short CD', target: 'Self' },
+      { roleSlot: 'mtSupport', skill: 'MT Buddy Mit', target: 'OT' },
+      { roleSlot: 'otSupport', skill: 'OT Buddy Mit', target: 'MT' },
+    ],
+    notes: 'Ikuya: Thunder III Set 3. Both tanks mitigate with 40% + short mitigation.'
+  },
   'dmu-p3-09': {
     actions: [
       { roleSlot: 'mtPartyMit', skill: 'Tank 90s (MT)', timingNote: 'GNB/DRK' },
@@ -1571,6 +1693,16 @@ const IKUYA_OVERRIDES: Record<string, { actions?: PlanRow['actions']; notes?: st
       { roleSlot: 'melee1', skill: 'Feint', target: 'Chaos' },
     ],
     notes: 'Ikuya: Healer Accretion pops 1st, DPS Accretion 2nd. Non-healers must avoid self-heals (Second Wind, Curing Waltz).'
+  },
+  'dmu-p3-10b': {
+    actions: [
+      { roleSlot: 'otInvuln', skill: 'OT Invulnerability', target: 'Self' },
+      { job: 'WHM', skill: 'Benison + Tetra OT' },
+      { job: 'AST', skill: 'CI OT' },
+      { job: 'SCH', skill: 'Excog OT' },
+      { job: 'SGE', skill: 'Taurochole OT' },
+    ],
+    notes: 'Ikuya: Thunder III Set 4. Exdeath Tank (PLD > GNB > DRK > WAR / OT) Invulnerability.'
   },
   'dmu-p3-11': {
     actions: [
@@ -1609,6 +1741,13 @@ const IKUYA_OVERRIDES: Record<string, { actions?: PlanRow['actions']; notes?: st
       { roleSlot: 'physRanged', skill: 'Phys Ranged Mit', timingNote: 'Ikuya: Phys Ranged on 6th tether' },
     ],
     notes: 'Ikuya: Phys Ranged mitigation used here for 6th tether and carries over.'
+  },
+  'dmu-p3-17b': {
+    actions: [
+      { roleSlot: 'mtBusterMit', skill: '40% Mit + Short CD', target: 'Self' },
+      { roleSlot: 'otBusterMit', skill: '40% Mit + Short CD', target: 'Self' },
+    ],
+    notes: 'Ikuya: Black Holes IV (10th tether). 40% + short mitigation for autos and tether.'
   },
   'dmu-p3-18': {
     actions: [
@@ -1694,6 +1833,15 @@ const IKUYA_OVERRIDES: Record<string, { actions?: PlanRow['actions']; notes?: st
     ],
     notes: 'Ikuya: Melee 2 Feint assigned to Maddening Orchestra 1 and carries into the 2x Fell Forces autos.'
   },
+  'dmu-p5-04b': {
+    actions: [
+      { roleSlot: 'mtInvuln', skill: 'Invulnerability 1', target: 'Self', timingNote: 'Press just before debuff expires' },
+      { roleSlot: 'mtProvoke', skill: 'Provoke', target: 'Boss', timingNote: 'Provoke on debuff application' },
+      { roleSlot: 'otBusterMit', skill: 'Rampart + Short Mit', target: 'Self' },
+      { roleSlot: 'otSupport', skill: 'OT Buddy Mit', target: 'MT' },
+    ],
+    notes: 'Ikuya: Flare/Holy 1. Invuln 1 Tank (WAR > DRK > GNB > PLD) invulns just before debuff expires and Provokes on debuff to solo Fell Forces 2 autos. Tank 2 has main threat to not get Holy.'
+  },
   'dmu-p5-05': {
     actions: [
       { roleSlot: 'otReprisal', skill: 'Reprisal (OT)', carryOver: true },
@@ -1717,6 +1865,15 @@ const IKUYA_OVERRIDES: Record<string, { actions?: PlanRow['actions']; notes?: st
       { roleSlot: 'caster', skill: 'Addle', timingNote: 'Ikuya: Addle after Celestriad tower 3' },
     ],
     notes: 'Ikuya: D1 Feint and Addle used after third Celestriad tower resolves.'
+  },
+  'dmu-p5-10b': {
+    actions: [
+      { roleSlot: 'otInvuln', skill: 'Invulnerability 2', target: 'Self', timingNote: 'Press just before debuff expires' },
+      { roleSlot: 'otProvoke', skill: 'Provoke', target: 'Boss', timingNote: 'Provoke on debuff application' },
+      { roleSlot: 'mtBusterMit', skill: 'Rampart + 40% Mit', target: 'Self' },
+      { roleSlot: 'mtSupport', skill: 'MT Buddy Mit', target: 'OT' },
+    ],
+    notes: 'Ikuya: Flare/Holy 2. Invuln 2 Tank (PLD > GNB > DRK > WAR) invulns just before debuff expires and Provokes on debuff to solo Fell Forces 4 autos 1 & 2. Auto 3 must be shared as invuln expires.'
   },
   'dmu-p5-13': {
     actions: [
@@ -1946,6 +2103,13 @@ const BIBLES_OVERRIDES: Record<string, { actions?: PlanRow['actions']; notes?: s
     ],
     notes: 'Bibles: Light of Judgment. Crow SCH: Spreadlo and 3rd Soil deployed here.'
   },
+  'dmu-p2-11b': {
+    actions: [
+      { roleSlot: 'mtBusterMit', skill: 'Rampart', target: 'Self', timingNote: 'End of castbar' },
+      { roleSlot: 'otBusterMit', skill: 'Rampart', target: 'Self', timingNote: 'End of castbar' },
+    ],
+    notes: 'Bibles: Wings of Destruction (halfroom). Tanks pre-pop Rampart at end of castbar. Wall Priority: PLD > WAR > DRK > GNB.'
+  },
   'dmu-p2-12': {
     actions: [
       { roleSlot: 'mtReprisal', skill: 'Reprisal (MT)' },
@@ -2024,6 +2188,25 @@ const BIBLES_OVERRIDES: Record<string, { actions?: PlanRow['actions']; notes?: s
     ],
     notes: 'Bibles: Boss transition. Healers pre-cast shields and prep instant burst heals for upcoming Accretions.'
   },
+  'dmu-p3-07b': {
+    actions: [
+      { roleSlot: 'mtInvuln', skill: 'MT Invulnerability', target: 'Self' },
+      { job: 'WHM', skill: 'Benison + Tetra MT' },
+      { job: 'AST', skill: 'CI MT' },
+      { job: 'SCH', skill: 'Excog MT' },
+      { job: 'SGE', skill: 'Taurochole MT' },
+    ],
+    notes: 'Bibles: Thunder III Set 2 on Chaos Tank. Chaos Tank (WAR > DRK > GNB > PLD / MT) uses Invulnerability.'
+  },
+  'dmu-p3-08b': {
+    actions: [
+      { roleSlot: 'mtBusterMit', skill: '40% Mit + Short CD', target: 'Self' },
+      { roleSlot: 'otBusterMit', skill: '40% Mit + Short CD', target: 'Self' },
+      { roleSlot: 'mtSupport', skill: 'MT Buddy Mit', target: 'OT' },
+      { roleSlot: 'otSupport', skill: 'OT Buddy Mit', target: 'MT' },
+    ],
+    notes: 'Bibles: Thunder III Set 3. Both tanks mitigate with 40% (120s) + Short Mit.'
+  },
   'dmu-p3-09': {
     actions: [
       { roleSlot: 'mtPartyMit', skill: 'Tank 90s (MT)', timingNote: 'GNB/DRK' },
@@ -2034,6 +2217,16 @@ const BIBLES_OVERRIDES: Record<string, { actions?: PlanRow['actions']; notes?: s
       { roleSlot: 'melee1', skill: 'Feint', target: 'Chaos', timingNote: 'autos after EQ' },
     ],
     notes: 'Bibles: Bagels WHM Bible: Benediction reserved exclusively for the Accretion healer. Pop healer Accretion first.'
+  },
+  'dmu-p3-10b': {
+    actions: [
+      { roleSlot: 'otInvuln', skill: 'OT Invulnerability', target: 'Self' },
+      { job: 'WHM', skill: 'Benison + Tetra OT' },
+      { job: 'AST', skill: 'CI OT' },
+      { job: 'SCH', skill: 'Excog OT' },
+      { job: 'SGE', skill: 'Taurochole OT' },
+    ],
+    notes: 'Bibles: Thunder III Set 4 on Exdeath Tank. Exdeath Tank (PLD > GNB > DRK > WAR / OT) uses Invulnerability.'
   },
   'dmu-p3-11': {
     actions: [
@@ -2067,6 +2260,13 @@ const BIBLES_OVERRIDES: Record<string, { actions?: PlanRow['actions']; notes?: s
       { roleSlot: 'physRanged', skill: 'Phys Ranged Mit', timingNote: 'Slap Happy 3' },
     ],
     notes: 'Bibles: White Hole full-party HP check. Burst AoE heals deployed to ensure everyone is at 100% HP.'
+  },
+  'dmu-p3-17b': {
+    actions: [
+      { roleSlot: 'mtBusterMit', skill: '40% Mit + Short CD', target: 'Self' },
+      { roleSlot: 'otBusterMit', skill: '40% Mit + Short CD', target: 'Self' },
+    ],
+    notes: 'Bibles: Black Holes IV (10th tether set). Both tanks mitigate with 40% + Short Mit.'
   },
   'dmu-p3-18': {
     actions: [
@@ -2186,6 +2386,15 @@ const BIBLES_OVERRIDES: Record<string, { actions?: PlanRow['actions']; notes?: s
     ],
     notes: 'Bibles: Maddening Orchestra 1. Venaa: Feint 1 and Phys Ranged 2 cover the hits.'
   },
+  'dmu-p5-04b': {
+    actions: [
+      { roleSlot: 'mtInvuln', skill: 'Invulnerability 1', target: 'Self', timingNote: 'Press just before Flare/Holy expires' },
+      { roleSlot: 'mtProvoke', skill: 'Provoke', target: 'Boss', timingNote: 'Provoke on debuff application' },
+      { roleSlot: 'otBusterMit', skill: 'Rampart + Short Mit', target: 'Self' },
+      { roleSlot: 'otSupport', skill: 'OT Buddy Mit', target: 'MT' },
+    ],
+    notes: 'Bibles: Flare/Holy 1. Invuln 1 Tank (WAR > DRK > GNB > PLD) invulns and Provokes on debuff application to solo Fell Forces 2 autos. Tank 2 holds aggro with Rampart + Short Mit.'
+  },
   'dmu-p5-06': {
     actions: [
       { roleSlot: 'mtPartyMit', skill: 'Tank 90s (MT)' },
@@ -2209,6 +2418,15 @@ const BIBLES_OVERRIDES: Record<string, { actions?: PlanRow['actions']; notes?: s
       { roleSlot: 'caster', skill: 'Addle', timingNote: 'after tower 3' },
     ],
     notes: 'Bibles: Ultima Repeater 2. Venaa: Addle 1 deployed right after Celestriad tower 3.'
+  },
+  'dmu-p5-10b': {
+    actions: [
+      { roleSlot: 'otInvuln', skill: 'Invulnerability 2', target: 'Self', timingNote: 'Press just before Flare/Holy expires' },
+      { roleSlot: 'otProvoke', skill: 'Provoke', target: 'Boss', timingNote: 'Provoke on debuff application' },
+      { roleSlot: 'mtBusterMit', skill: 'Rampart + 40% Mit', target: 'Self' },
+      { roleSlot: 'mtSupport', skill: 'MT Buddy Mit', target: 'OT' },
+    ],
+    notes: 'Bibles: Flare/Holy 2. Invuln 2 Tank (PLD > GNB > DRK > WAR) invulns and Provokes on debuff application to solo Fell Forces 4 autos 1 & 2. Auto 3 shared with Rampart + Short Mit.'
   },
   'dmu-p5-11': {
     actions: [

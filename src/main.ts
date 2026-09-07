@@ -11,6 +11,7 @@ import { renderQuickCheatDrawer, generateEchoMacro } from './components/QuickChe
 import { renderQuickCheatView } from './components/QuickCheatView';
 import { renderCreditsModal } from './components/CreditsModal';
 import { renderFocusModal } from './components/FocusModal';
+import { renderTankPriorityCard } from './components/TankPriorityCard';
 import { 
   getAvailablePositionsForJob, 
   getDefaultPositionForJob, 
@@ -32,6 +33,7 @@ interface AppState {
   focusModalWidth: number;
   focusModalHeight: number;
   isFocusModalMaximized: boolean;
+  isTankPrioOpen: boolean;
 }
 
 // Initialize application state from URL query parameters if present
@@ -70,6 +72,7 @@ const state: AppState = {
   focusModalWidth: 1050,
   focusModalHeight: 760,
   isFocusModalMaximized: false,
+  isTankPrioOpen: false,
 };
 
 // Synchronizes the application state with the browser URL query string without reloading
@@ -156,8 +159,15 @@ function renderApp(): void {
     mainContentHtml = `
       ${renderPartyCompBar({
         composition: state.partyComp,
+        isTankPrioOpen: state.isTankPrioOpen,
         onSlotChange: () => {},
       })}
+
+      ${state.isTankPrioOpen ? `
+        <div style="max-width: 1440px; margin: 0 auto; padding: 0.75rem 1.25rem 0 1.25rem;">
+          ${renderTankPriorityCard({ partyComp: state.partyComp, activeJob: state.quickCheatJob })}
+        </div>
+      ` : ''}
 
       ${renderPhaseNav({
         currentPhase: state.currentPhase,
@@ -413,6 +423,15 @@ function attachEventListeners(): void {
         }
       });
     });
+
+    // Toggle Tank Priorities banner in Party Matrix view
+    const toggleTankPrioBtn = document.getElementById('toggle-tank-prio-btn');
+    if (toggleTankPrioBtn) {
+      toggleTankPrioBtn.addEventListener('click', () => {
+        state.isTankPrioOpen = !state.isTankPrioOpen;
+        renderApp();
+      });
+    }
 
     // Quick-cheat sidebar job selector
     const quickJobSelect = document.getElementById('quick-job-select') as HTMLSelectElement | null;

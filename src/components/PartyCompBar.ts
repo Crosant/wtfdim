@@ -3,6 +3,7 @@ import { JOB_REGISTRY } from '../data/jobs';
 
 interface PartyCompBarProps {
   composition: PartyComposition;
+  isTankPrioOpen?: boolean;
   onSlotChange: (slot: keyof PartyComposition, newJob: JobId) => void;
 }
 
@@ -56,6 +57,9 @@ export function renderPartyCompBar(props: PartyCompBarProps): string {
         <div class="comp-chips">
           ${chipsHtml}
         </div>
+        <button id="toggle-tank-prio-btn" class="btn btn-sm ${props.isTankPrioOpen ? 'btn-primary' : 'btn-secondary'}" style="margin-left: auto; gap: 0.35rem;" title="Toggle DMU Tank Priority Rules">
+          <span>🛡️ Tank Priorities</span>
+        </button>
       </div>
     </div>
   `;

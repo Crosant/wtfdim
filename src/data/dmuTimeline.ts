@@ -346,6 +346,18 @@ export const DMU_TIMELINE: Mechanic[] = [
     description: 'Heavy raidwide following Forsaken.'
   },
   {
+    id: 'dmu-p2-11b',
+    phase: 2,
+    phaseName: 'Phase 2: Forsaken Kefka',
+    timestamp: '02:44',
+    seconds: 164,
+    name: 'Wings of Destruction (Halfroom)',
+    damageType: 'magic',
+    rawDamage: 'Halfroom Cleave',
+    severity: 'heavy_mechanic',
+    description: 'First Wings halfroom cleave. Pre-pop Rampart at end of castbar. Wall Priority: PLD > WAR > DRK > GNB.'
+  },
+  {
     id: 'dmu-p2-12',
     phase: 2,
     phaseName: 'Phase 2: Forsaken Kefka',
@@ -355,7 +367,7 @@ export const DMU_TIMELINE: Mechanic[] = [
     damageType: 'magic',
     rawDamage: '850,000',
     severity: 'tankbuster',
-    description: 'Dual cleave tankbuster requiring active spot healing.'
+    description: 'Dual cleave tankbuster (Close & Far). Tanks pop 40% + 90s + Short CD. Wall Priority: PLD > WAR > DRK > GNB.'
   },
   {
     id: 'dmu-p2-13',
@@ -443,7 +455,7 @@ export const DMU_TIMELINE: Mechanic[] = [
     damageType: 'magic',
     rawDamage: 'Knockback + 230,000',
     severity: 'heavy_mechanic',
-    description: 'Center knockback mitigated by Tank LB3.'
+    description: 'Center knockback mitigated by Tank LB3. LB Priority: WAR > DRK > PLD > GNB.'
   },
   {
     id: 'dmu-p3-07',
@@ -458,6 +470,18 @@ export const DMU_TIMELINE: Mechanic[] = [
     description: 'Post-knockback cyclone ticks.'
   },
   {
+    id: 'dmu-p3-07b',
+    phase: 3,
+    phaseName: 'Phase 3: Chaos & Exdeath',
+    timestamp: '02:35',
+    seconds: 155,
+    name: 'Thunder III (2nd Set)',
+    damageType: 'magic',
+    rawDamage: '700,000 x2',
+    severity: 'tankbuster',
+    description: 'Tankbuster on Chaos tank. Chaos Tank (WAR > DRK > GNB > PLD / MT) uses Invulnerability.'
+  },
+  {
     id: 'dmu-p3-08',
     phase: 3,
     phaseName: 'Phase 3: Chaos & Exdeath',
@@ -467,7 +491,19 @@ export const DMU_TIMELINE: Mechanic[] = [
     damageType: 'magic',
     rawDamage: 'Debuff Setup',
     severity: 'heavy_mechanic',
-    description: 'Decisive Battle cast leading into Accretions.'
+    description: 'Decisive Battle cast. Stand under and Provoke respective boss (Chaos: WAR > DRK > GNB > PLD | Exdeath: PLD > GNB > DRK > WAR).'
+  },
+  {
+    id: 'dmu-p3-08b',
+    phase: 3,
+    phaseName: 'Phase 3: Chaos & Exdeath',
+    timestamp: '02:52',
+    seconds: 172,
+    name: 'Thunder III (3rd Set)',
+    damageType: 'magic',
+    rawDamage: '700,000 x2',
+    severity: 'tankbuster',
+    description: 'Double tankbuster. Exdeath tank takes hit 1, Chaos tank takes hit 2. Both tanks mitigate with 40% (120s) + Short Mit.'
   },
   {
     id: 'dmu-p3-09',
@@ -492,6 +528,18 @@ export const DMU_TIMELINE: Mechanic[] = [
     rawDamage: '190,000',
     severity: 'raidwide',
     description: 'First beam blast.'
+  },
+  {
+    id: 'dmu-p3-10b',
+    phase: 3,
+    phaseName: 'Phase 3: Chaos & Exdeath',
+    timestamp: '03:34',
+    seconds: 214,
+    name: 'Thunder III (4th Set)',
+    damageType: 'magic',
+    rawDamage: '700,000 x2',
+    severity: 'tankbuster',
+    description: 'Tankbuster on Exdeath tank. Exdeath Tank (PLD > GNB > DRK > WAR / OT) uses Invulnerability.'
   },
   {
     id: 'dmu-p3-11',
@@ -551,7 +599,7 @@ export const DMU_TIMELINE: Mechanic[] = [
     damageType: 'magic',
     rawDamage: '950,000',
     severity: 'tankbuster',
-    description: 'Heavy tankbuster sequence.'
+    description: 'Double tankbuster. Exdeath tank takes hit 1, Chaos tank takes hit 2 with Rampart + 90s + Short Mit.'
   },
   {
     id: 'dmu-p3-16',
@@ -576,6 +624,18 @@ export const DMU_TIMELINE: Mechanic[] = [
     rawDamage: 'Full HP Check',
     severity: 'heavy_mechanic',
     description: 'Everyone must be topped to 100% maximum HP.'
+  },
+  {
+    id: 'dmu-p3-17b',
+    phase: 3,
+    phaseName: 'Phase 3: Chaos & Exdeath',
+    timestamp: '05:09',
+    seconds: 309,
+    name: 'Black Holes IV (10th Tether Set)',
+    damageType: 'magic',
+    rawDamage: 'Tether Damage',
+    severity: 'heavy_mechanic',
+    description: '10th tether set (Look Upon Me and Despair). Both tanks mitigate with 40% + Short Mit.'
   },
   {
     id: 'dmu-p3-18',
@@ -766,6 +826,18 @@ export const DMU_TIMELINE: Mechanic[] = [
     description: 'Full party raidwide + tankbuster.'
   },
   {
+    id: 'dmu-p5-04b',
+    phase: 5,
+    phaseName: 'Phase 5: Kefka Reimagined',
+    timestamp: '01:26',
+    seconds: 86,
+    name: 'Flare / Holy 1 (Invuln 1)',
+    damageType: 'magic',
+    rawDamage: '1,300,000 / 440,000',
+    severity: 'tankbuster',
+    description: 'Chaotic Holy / Flare Diffusion tankbuster. Invuln 1 Tank (WAR > DRK > GNB > PLD) invulns and Provokes on debuff application to solo Fell Forces 2 autos. Tank 2 holds aggro with Rampart + Short Mit.'
+  },
+  {
     id: 'dmu-p5-05',
     phase: 5,
     phaseName: 'Phase 5: Kefka Reimagined',
@@ -836,6 +908,18 @@ export const DMU_TIMELINE: Mechanic[] = [
     rawDamage: '280,000',
     severity: 'raidwide',
     description: 'Penultimate raidwide sequence.'
+  },
+  {
+    id: 'dmu-p5-10b',
+    phase: 5,
+    phaseName: 'Phase 5: Kefka Reimagined',
+    timestamp: '02:58',
+    seconds: 178,
+    name: 'Flare / Holy 2 (Invuln 2)',
+    damageType: 'magic',
+    rawDamage: '1,300,000 / 440,000',
+    severity: 'tankbuster',
+    description: 'Chaotic Holy / Flare Diffusion tankbuster. Invuln 2 Tank (PLD > GNB > DRK > WAR) invulns and Provokes on debuff application to solo Fell Forces 4 autos 1 & 2. Tank 1 mitigates with Rampart + 40%.'
   },
   {
     id: 'dmu-p5-11',
