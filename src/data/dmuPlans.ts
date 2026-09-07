@@ -163,6 +163,7 @@ const LPDU_ROWS: PlanRow[] = [
     damageType: 'magic',
     rawDamage: 'Confetti Soaks',
     actions: [
+      { roleSlot: 'mtReprisal', skill: 'Reprisal (MT)', timingNote: 'Press after Gravitas to catch Confetti & LoJ' },
       { job: 'WHM', skill: 'Liturgy of the Bell', timingNote: 'Before 1st puddles' },
       { job: 'AST', skill: 'Horoscope + Celestial Opposition', timingNote: 'Walking back middle' },
       { job: 'SCH', skill: 'Summon Seraph + Fey Illum + Soil', timingNote: 'At least 3s on confetti' },
@@ -479,7 +480,10 @@ const LPDU_ROWS: PlanRow[] = [
     damageType: 'magic',
     rawDamage: '850,000',
     actions: [
+      { roleSlot: 'mtBusterMit', skill: '40% Mit + Short CD', target: 'Self' },
+      { roleSlot: 'otBusterMit', skill: '40% Mit + Short CD', target: 'Self' },
       { roleSlot: 'mtReprisal', skill: 'Reprisal (MT)', timingNote: 'Early in cast' },
+      { roleSlot: 'otReprisal', skill: 'Reprisal (OT)' },
       { roleSlot: 'mtPartyMit', skill: 'Tank 90s (MT)', timingNote: 'Early in cast' },
       { job: 'WHM', skill: 'Plenary + Solace MT' },
       { job: 'AST', skill: 'Collective Unconscious + Bole MT' },
@@ -489,7 +493,7 @@ const LPDU_ROWS: PlanRow[] = [
       { roleSlot: 'physRanged2', skill: 'Phys Ranged Mit', timingNote: 'If double PhysR' },
       { roleSlot: 'caster2', skill: 'Addle', timingNote: 'If double Caster' },
     ],
-    notes: 'Dual cleave tankbuster requiring active spot healing.'
+    notes: 'Dual cleave tankbuster (Close & Far). Tanks pop 40% + 90s + Short CD. Wall Priority: PLD > WAR > DRK > GNB.'
   },
   {
     mechanicId: 'dmu-p2-13',
@@ -498,6 +502,10 @@ const LPDU_ROWS: PlanRow[] = [
     damageType: 'magic',
     rawDamage: '1,200,000',
     actions: [
+      { roleSlot: 'mtBusterMit', skill: 'Short CD', target: 'Self' },
+      { roleSlot: 'otBusterMit', skill: 'Short CD', target: 'Self' },
+      { roleSlot: 'mtSupport', skill: 'MT Buddy Mit', target: 'OT' },
+      { roleSlot: 'otSupport', skill: 'OT Buddy Mit', target: 'MT' },
       { roleSlot: 'mtReprisal', skill: 'Reprisal (MT)', carryOver: true },
       { roleSlot: 'mtPartyMit', skill: 'Tank 90s (MT)', carryOver: true },
       { job: 'WHM', skill: 'Benisons both + Aquaveil OT' },
@@ -1039,12 +1047,15 @@ const LPDU_ROWS: PlanRow[] = [
     rawDamage: '150,000 x3',
     actions: [
       { roleSlot: 'mtReprisal', skill: 'Reprisal (MT)', carryOver: true },
+      { roleSlot: 'mtBusterMit', skill: '40% Mit + Short CD', target: 'Self' },
+      { roleSlot: 'otBusterMit', skill: 'Rampart + 90s + Short CD', target: 'Self' },
+      { roleSlot: 'otSupport', skill: 'OT Buddy Mit', target: 'MT' },
       { job: 'WHM', skill: 'Plenary + Aquaveil OT + Benison MT', target: 'Tanks' },
       { job: 'AST', skill: 'Collective Unconscious + Bole MT + Exalt OT', target: 'Tanks' },
       { job: 'SCH', skill: 'Sacred Soil', carryOver: true },
       { job: 'SGE', skill: 'Holos between 1st & 2nd auto + Haima' },
     ],
-    notes: 'Autos hit tanks for extreme physical damage. Healers must prioritize spot defensives.'
+    notes: 'Autos hit tanks for extreme physical damage. Saybell: MT 40% + Short, OT Rampart + 90s + Short.'
   },
   {
     mechanicId: 'dmu-p5-03',
@@ -1053,12 +1064,14 @@ const LPDU_ROWS: PlanRow[] = [
     damageType: 'magic',
     rawDamage: '240,000',
     actions: [
+      { roleSlot: 'otReprisal', skill: 'Reprisal (OT)' },
+      { roleSlot: 'otProvoke', skill: 'Provoke (OT)', timingNote: 'Voke for safety, OT needs aggro before Flare' },
       { job: 'WHM', skill: 'Temperance', timingNote: 'For movement' },
       { job: 'AST', skill: 'Neutral Sect + Sun Sign + CO' },
       { job: 'SCH', skill: 'Expedient + Succor' },
       { job: 'SGE', skill: 'Panhaima + Holos', carryOver: true },
     ],
-    notes: 'Exaflare pattern movement.'
+    notes: 'Exaflare pattern movement. Saybell: OT Reprisal + Provoke to ensure OT holds aggro before Flare.'
   },
   {
     mechanicId: 'dmu-p5-04',
@@ -1098,13 +1111,14 @@ const LPDU_ROWS: PlanRow[] = [
     damageType: 'physical',
     rawDamage: '150,000 x2',
     actions: [
+      { roleSlot: 'mtInvuln', skill: 'Invuln Carryover (Autos 1 & 2)', target: 'Self', carryOver: true },
       { roleSlot: 'otReprisal', skill: 'Reprisal (OT)', carryOver: true },
       { job: 'AST', skill: 'Sun Sign + Star off cd + ED OT' },
       { job: 'SCH', skill: 'Sacred Soil + Fey Illumination', carryOver: true },
       { job: 'SGE', skill: 'Kerachole', carryOver: true },
       { roleSlot: 'melee1', skill: 'Feint', carryOver: true },
     ],
-    notes: 'Second set of heavy tank autos.'
+    notes: 'Second set of heavy tank autos soloed under Invuln 1.'
   },
   {
     mechanicId: 'dmu-p5-06',
@@ -1147,6 +1161,8 @@ const LPDU_ROWS: PlanRow[] = [
     damageType: 'physical',
     rawDamage: '150,000 x2',
     actions: [
+      { roleSlot: 'mtBusterMit', skill: 'Short CD', target: 'Self' },
+      { roleSlot: 'otBusterMit', skill: 'Short CD', target: 'Self' },
       { roleSlot: 'mtReprisal', skill: 'Reprisal (MT)', carryOver: true },
       { roleSlot: 'otPartyMit', skill: 'Tank 90s (OT)', carryOver: true },
       { job: 'WHM', skill: 'Benison MT + Aquaveil OT' },
@@ -1157,7 +1173,7 @@ const LPDU_ROWS: PlanRow[] = [
       { roleSlot: 'physRanged', skill: 'Phys Ranged Mit', carryOver: true },
       { roleSlot: 'caster', skill: 'Addle', carryOver: true },
     ],
-    notes: 'Third set of heavy tank auto attacks.'
+    notes: 'Third set of heavy tank auto attacks (Short CDs on both tanks).'
   },
   {
     mechanicId: 'dmu-p5-09',
@@ -1206,11 +1222,14 @@ const LPDU_ROWS: PlanRow[] = [
     damageType: 'physical',
     rawDamage: '150,000 x3',
     actions: [
+      { roleSlot: 'otInvuln', skill: 'Invuln Carryover (Autos 1 & 2)', target: 'Self', carryOver: true },
+      { roleSlot: 'mtPartyMit', skill: 'Tank 90s (MT) (Auto 3)', timingNote: 'Share 3rd auto' },
+      { roleSlot: 'otPartyMit', skill: 'Tank 90s (OT) (Auto 3)', timingNote: 'Share 3rd auto' },
       { job: 'WHM', skill: 'Aquaveil OT + leftover Benisons' },
       { job: 'AST', skill: 'Leftover card mits MT + Exalt OT + CI' },
       { job: 'SCH', skill: 'Fey Blessing for autos' },
     ],
-    notes: 'Final autos before enrage channel.'
+    notes: 'Final autos before enrage channel. Autos 1 & 2 soloed under Invuln 2, auto 3 shared with 90s party mits.'
   },
   {
     mechanicId: 'dmu-p5-12',
@@ -1463,11 +1482,12 @@ const IKUYA_OVERRIDES: Record<string, { actions?: PlanRow['actions']; notes?: st
   },
   'dmu-p1-09': {
     actions: [
+      { roleSlot: 'mtReprisal', skill: 'Reprisal (MT)', timingNote: 'Press after Gravitas to catch Confetti & LoJ' },
       { job: 'WHM', skill: 'Liturgy of the Bell', timingNote: 'Placed before puddles or expires here' },
       { job: 'SCH', skill: 'Summon Seraph + Fey Illumination' },
       { job: 'SGE', skill: 'Kerachole + Philosophia' },
     ],
-    notes: 'Second gravity stack drop.'
+    notes: 'Second gravity stack drop. Saybell: MT Reprisal after Gravitas.'
   },
   'dmu-p1-10': {
     actions: [
@@ -1523,11 +1543,14 @@ const IKUYA_OVERRIDES: Record<string, { actions?: PlanRow['actions']; notes?: st
   },
   'dmu-p2-01': {
     actions: [
+      { roleSlot: 'mtEmbraceMit', skill: 'MT Embrace Defensives', target: 'Self' },
+      { roleSlot: 'otEmbraceMit', skill: 'OT Embrace Defensives', target: 'Self' },
+      { roleSlot: 'otReprisal', skill: 'Reprisal (OT)' },
       { roleSlot: 'melee2', skill: 'Feint', timingNote: 'D2 Feints opening buster' },
       { job: 'SCH', skill: 'Spreadlo', timingNote: 'Downtime shield off tank' },
       { job: 'SGE', skill: 'Holos', timingNote: 'Pressed here so it returns for Light of Judgment' },
     ],
-    notes: 'Ikuya: D2 Feint and Holos used early on first Ultimate Embrace to cushion tanks and reset for Light of Judgment.'
+    notes: 'Ikuya: D2 Feint and Holos used early on first Ultimate Embrace to cushion tanks and reset for Light of Judgment. Both tanks kitchen sink (Holmgang if WAR).'
   },
   'dmu-p2-02': {
     actions: [
@@ -1612,7 +1635,10 @@ const IKUYA_OVERRIDES: Record<string, { actions?: PlanRow['actions']; notes?: st
   },
   'dmu-p2-12': {
     actions: [
+      { roleSlot: 'mtBusterMit', skill: '40% Mit + Short CD', target: 'Self' },
+      { roleSlot: 'otBusterMit', skill: '40% Mit + Short CD', target: 'Self' },
       { roleSlot: 'mtReprisal', skill: 'Reprisal (MT)' },
+      { roleSlot: 'otReprisal', skill: 'Reprisal (OT)' },
       { roleSlot: 'mtPartyMit', skill: 'Tank 90s (MT)', timingNote: 'Press early if WAR to avoid Shake eating shields' },
       { job: 'WHM', skill: 'Plenary Indulgence' },
       { job: 'AST', skill: 'Collective Unconscious' },
@@ -1620,10 +1646,14 @@ const IKUYA_OVERRIDES: Record<string, { actions?: PlanRow['actions']; notes?: st
       { job: 'SGE', skill: 'Kerachole + Panhaima' },
       { roleSlot: 'melee2', skill: 'Feint', timingNote: 'D2 Feint covers Wings + Ultimate Embrace 2' },
     ],
-    notes: 'Ikuya: Melee 2 Feint explicitly assigned here to mitigate Wings and carry into Ultimate Embrace 2.'
+    notes: 'Ikuya: Melee 2 Feint explicitly assigned here to mitigate Wings and carry into Ultimate Embrace 2. Both tanks pop 40% + 90s + Short CD.'
   },
   'dmu-p2-13': {
     actions: [
+      { roleSlot: 'mtBusterMit', skill: 'Short CD', target: 'Self' },
+      { roleSlot: 'otBusterMit', skill: 'Short CD', target: 'Self' },
+      { roleSlot: 'mtSupport', skill: 'MT Buddy Mit', target: 'OT' },
+      { roleSlot: 'otSupport', skill: 'OT Buddy Mit', target: 'MT' },
       { roleSlot: 'mtReprisal', skill: 'Reprisal (MT)', carryOver: true },
       { roleSlot: 'mtPartyMit', skill: 'Tank 90s (MT)', carryOver: true },
       { job: 'WHM', skill: 'Plenary Indulgence', carryOver: true },
@@ -1632,7 +1662,7 @@ const IKUYA_OVERRIDES: Record<string, { actions?: PlanRow['actions']; notes?: st
       { job: 'SGE', skill: 'Kerachole + Panhaima', carryOver: true },
       { roleSlot: 'melee2', skill: 'Feint', carryOver: true },
     ],
-    notes: 'End of P2 tankbuster.'
+    notes: 'End of P2 tankbuster. Short cooldowns and buddy mitigations cushion final hits.'
   },
   'dmu-p3-01': {
     actions: [
@@ -2026,12 +2056,13 @@ const BIBLES_OVERRIDES: Record<string, { actions?: PlanRow['actions']; notes?: s
   },
   'dmu-p1-09': {
     actions: [
+      { roleSlot: 'mtReprisal', skill: 'Reprisal (MT)', timingNote: 'Press after Gravitas to catch Confetti & LoJ' },
       { job: 'WHM', skill: 'Plenary Indulgence', timingNote: 'walking to middle' },
       { job: 'AST', skill: 'Collective Unconscious', timingNote: 'for confetti' },
       { job: 'SCH', skill: 'Summon Seraph + Sacred Soil', timingNote: 'gravity + confetti' },
       { job: 'SGE', skill: 'Holos + Kerachole', timingNote: 'Holos @ 14s confetti' },
     ],
-    notes: 'Bibles: Reqcat SGE Bible: Holos at 14s on confetti debuff. Crow SCH: Soil with >=3s left to carry into raidwide.'
+    notes: 'Bibles: Reqcat SGE Bible: Holos at 14s on confetti debuff. Crow SCH: Soil with >=3s left to carry into raidwide. Saybell: MT Reprisal after Gravitas.'
   },
   'dmu-p1-11b': {
     actions: [
@@ -2066,13 +2097,16 @@ const BIBLES_OVERRIDES: Record<string, { actions?: PlanRow['actions']; notes?: s
   },
   'dmu-p2-01': {
     actions: [
+      { roleSlot: 'mtEmbraceMit', skill: 'MT Embrace Defensives', target: 'Self' },
+      { roleSlot: 'otEmbraceMit', skill: 'OT Embrace Defensives', target: 'Self' },
+      { roleSlot: 'otReprisal', skill: 'Reprisal (OT)' },
       { roleSlot: 'melee2', skill: 'Feint', timingNote: 'early buster' },
       { job: 'WHM', skill: 'Aquaveil + Benison', target: 'Tanks', timingNote: 'Benisons MT/OT' },
       { job: 'AST', skill: 'Exaltation + CI', target: 'Tanks', timingNote: 'CIs + Exalt OT' },
       { job: 'SCH', skill: 'Spreadlo + Sacred Soil', timingNote: 'Rampart Spreadlo + Soil' },
       { job: 'SGE', skill: 'Holos', timingNote: 'on 1st Embrace' },
     ],
-    notes: 'Bibles: Saybell Tank & Healer Bibles: Spreadlo off tank with Rampart buff. Holos used early to return for LoJ.'
+    notes: 'Bibles: Saybell Tank: MT & OT Kitchen Sink (Holmgang if WAR). Co-healers deploy single-target defensives and shields.'
   },
   'dmu-p2-02': {
     actions: [
@@ -2098,11 +2132,13 @@ const BIBLES_OVERRIDES: Record<string, { actions?: PlanRow['actions']; notes?: s
   },
   'dmu-p2-06': {
     actions: [
+      { roleSlot: 'mtPartyMit', skill: 'Tank 90s (MT)', timingNote: 'WAR/PLD' },
+      { roleSlot: 'otReprisal', skill: 'Reprisal (OT)' },
       { job: 'WHM', skill: 'Temperance', timingNote: 'Set 4' },
       { job: 'AST', skill: 'Macrocosmos', timingNote: 'manual trigger' },
       { job: 'SCH', skill: 'Seraphism', timingNote: '1st Past/Future' },
     ],
-    notes: 'Fourth tower soak.'
+    notes: 'Fourth tower soak. Saybell: OT Reprisal + MT Tank 90s.'
   },
   'dmu-p2-07': {
     actions: [
@@ -2145,7 +2181,10 @@ const BIBLES_OVERRIDES: Record<string, { actions?: PlanRow['actions']; notes?: s
   },
   'dmu-p2-12': {
     actions: [
+      { roleSlot: 'mtBusterMit', skill: '40% Mit + Short CD', target: 'Self' },
+      { roleSlot: 'otBusterMit', skill: '40% Mit + Short CD', target: 'Self' },
       { roleSlot: 'mtReprisal', skill: 'Reprisal (MT)' },
+      { roleSlot: 'otReprisal', skill: 'Reprisal (OT)' },
       { roleSlot: 'mtPartyMit', skill: 'Tank 90s (MT)' },
       { job: 'WHM', skill: 'Aquaveil + Benison', target: 'Tanks', timingNote: 'Benison + Aquaveil' },
       { job: 'AST', skill: 'Bole + Celestial Intersection', target: 'Tanks', timingNote: 'Bole MT + CO' },
@@ -2155,7 +2194,7 @@ const BIBLES_OVERRIDES: Record<string, { actions?: PlanRow['actions']; notes?: s
       { roleSlot: 'physRanged2', skill: 'Phys Ranged Mit', timingNote: 'covers Wings + Embrace' },
       { roleSlot: 'caster2', skill: 'Addle', timingNote: 'covers Wings + Embrace' },
     ],
-    notes: 'Bibles: Dual tankbusters. Single-target mitigations prioritized on both tanks.'
+    notes: 'Bibles: Dual tankbusters. Single-target mitigations and 40% + 90s + Short CD prioritized on both tanks.'
   },
   'dmu-p3-01': {
     actions: [
@@ -2183,12 +2222,17 @@ const BIBLES_OVERRIDES: Record<string, { actions?: PlanRow['actions']; notes?: s
   },
   'dmu-p3-03': {
     actions: [
+      { roleSlot: 'mtBusterMit', skill: 'Rampart + 90s + Short CD', target: 'Self' },
+      { roleSlot: 'otBusterMit', skill: 'Rampart + 90s + Short CD', target: 'Self' },
+      { roleSlot: 'mtSupport', skill: 'MT Buddy Mit', target: 'OT' },
+      { roleSlot: 'otSupport', skill: 'OT Buddy Mit', target: 'MT' },
       { roleSlot: 'otReprisal', skill: 'Reprisal (OT)', carryOver: true },
       { job: 'WHM', skill: 'Tetragrammaton + Benison', target: 'MT', timingNote: 'on invuln tank' },
       { job: 'SCH', skill: 'Expedient + Summon Seraph + Fey Illumination', timingNote: 'at 80% TB' },
       { job: 'SGE', skill: 'Holos', carryOver: true },
+      { roleSlot: 'caster', skill: 'Addle', target: 'Exdeath', timingNote: 'On Exdeath' },
     ],
-    notes: 'Bibles: Thunder III tankbusters. Saybell: 1st Thunder III typically invulned.'
+    notes: 'Bibles: Thunder III double buster (Middeath standard: Rampart + 90s + Short CD on both tanks).'
   },
   'dmu-p3-04': {
     actions: [
@@ -2399,6 +2443,10 @@ const BIBLES_OVERRIDES: Record<string, { actions?: PlanRow['actions']; notes?: s
   },
   'dmu-p5-02': {
     actions: [
+      { roleSlot: 'mtReprisal', skill: 'Reprisal (MT)', carryOver: true },
+      { roleSlot: 'mtBusterMit', skill: '40% Mit + Short CD', target: 'Self' },
+      { roleSlot: 'otBusterMit', skill: 'Rampart + 90s + Short CD', target: 'Self' },
+      { roleSlot: 'otSupport', skill: 'OT Buddy Mit', target: 'MT' },
       { job: 'WHM', skill: 'Aquaveil + Benison', target: 'Tanks', timingNote: 'for autos' },
       { job: 'AST', skill: 'Bole + Exaltation', target: 'Tanks', timingNote: 'for autos' },
       { job: 'SGE', skill: 'Holos', timingNote: 'covers flood' },
@@ -2407,12 +2455,14 @@ const BIBLES_OVERRIDES: Record<string, { actions?: PlanRow['actions']; notes?: s
   },
   'dmu-p5-03': {
     actions: [
+      { roleSlot: 'otReprisal', skill: 'Reprisal (OT)' },
+      { roleSlot: 'otProvoke', skill: 'Provoke (OT)', timingNote: 'Voke for safety, OT needs aggro before Flare' },
       { job: 'WHM', skill: 'Divine Caress', timingNote: 'Chaotic Flood' },
       { job: 'AST', skill: 'Sun Sign', timingNote: 'Chaotic Flood' },
       { job: 'SCH', skill: 'Expedient', timingNote: 'Chaotic Flood' },
       { job: 'SGE', skill: 'Holos + Panhaima', timingNote: 'Pneuma after last hit' },
     ],
-    notes: 'Bibles: Chaotic Flood resolution.'
+    notes: 'Bibles: Chaotic Flood resolution. Saybell: OT Reprisal + Provoke.'
   },
   'dmu-p5-04': {
     actions: [
@@ -2470,12 +2520,15 @@ const BIBLES_OVERRIDES: Record<string, { actions?: PlanRow['actions']; notes?: s
   },
   'dmu-p5-11': {
     actions: [
+      { roleSlot: 'otInvuln', skill: 'Invuln Carryover (Autos 1 & 2)', target: 'Self', carryOver: true },
+      { roleSlot: 'mtPartyMit', skill: 'Tank 90s (MT) (Auto 3)', timingNote: 'Share 3rd auto' },
+      { roleSlot: 'otPartyMit', skill: 'Tank 90s (OT) (Auto 3)', timingNote: 'Share 3rd auto' },
       { job: 'WHM', skill: 'Divine Benison', target: 'MT', timingNote: 'for autos' },
       { job: 'AST', skill: 'Exaltation + CI', target: 'Tanks', timingNote: 'for autos' },
       { job: 'SCH', skill: 'Sacred Soil', timingNote: 'after exa spreads' },
       { job: 'SGE', skill: 'Kerachole + Haima', timingNote: 'early Kera' },
     ],
-    notes: 'Bibles: Maddening Orchestra 2. Early Soil and Kerachole cover TBs and cushion the following 3x auto attack barrage.'
+    notes: 'Bibles: Maddening Orchestra 2. Early Soil and Kerachole cover TBs. Autos 1 & 2 soloed under Invuln 2, auto 3 shared with 90s party mits.'
   },
   'dmu-p5-13': {
     actions: [
@@ -2493,6 +2546,8 @@ const BIBLES_OVERRIDES: Record<string, { actions?: PlanRow['actions']; notes?: s
   },
   'dmu-p5-14': {
     actions: [
+      { roleSlot: 'mtReprisal', skill: 'Reprisal (MT)', carryOver: true },
+      { roleSlot: 'mtPartyMit', skill: 'Tank 90s (MT)', carryOver: true },
       { job: 'WHM', skill: 'Temperance', timingNote: 'after stack 1' },
       { job: 'AST', skill: 'Macrocosmos + Sun Sign', timingNote: 'after stack 1' },
       { job: 'SCH', skill: 'Seraphism', timingNote: 'after stack 1' },
@@ -2505,6 +2560,8 @@ const BIBLES_OVERRIDES: Record<string, { actions?: PlanRow['actions']; notes?: s
   },
   'dmu-p5-15': {
     actions: [
+      { roleSlot: 'mtReprisal', skill: 'Reprisal (MT)', carryOver: true },
+      { roleSlot: 'mtPartyMit', skill: 'Tank 90s (MT)', carryOver: true },
       { job: 'AST', skill: 'Macrocosmos', carryOver: true },
       { job: 'SCH', skill: 'Seraphism', carryOver: true },
       { job: 'SGE', skill: 'Panhaima', timingNote: 'Stack 2' },
