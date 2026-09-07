@@ -804,7 +804,7 @@ export const IKUYA_PLAN_ROWS: PlanRow[] = [
       { roleSlot: 'mtBusterMit', skill: '40% Mit + Short CD', target: 'Self' },
       { roleSlot: 'otBusterMit', skill: '40% Mit + Short CD', target: 'Self' },
     ],
-    notes: 'Ikuya: Black Holes IV (10th tether). 40% Mit + Short CD for autos and tether.'
+    notes: 'Ikuya: Black Holes IV (10th tether). 40% + short mitigation for autos and tether.'
   },
   {
     mechanicId: 'dmu-p3-18',
