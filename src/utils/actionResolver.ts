@@ -35,10 +35,10 @@ export function getTankInvulnName(job: JobId): string {
 // Resolves major defensive stack for heavy tankbusters based on job
 export function getTankBusterKitchenSink(job: JobId): string {
   switch (job) {
-    case 'WAR': return 'Damnation + Bloodwhetting';
-    case 'PLD': return 'Sentinel + Holy Sheltron';
-    case 'DRK': return 'Shadowed Vigil + TBN';
-    case 'GNB': return 'Great Nebula + Corundum';
+    case 'WAR': return 'Damnation + Bloodwhetting + Rampart';
+    case 'PLD': return 'Sentinel + Holy Sheltron + Rampart';
+    case 'DRK': return 'Shadowed Vigil + TBN + Rampart';
+    case 'GNB': return 'Great Nebula + Corundum + Rampart';
     default: return 'Full Defensives';
   }
 }
@@ -329,6 +329,30 @@ export function resolveActionForParty(action: PlanAction, partyComp: PartyCompos
           slotTag: 'Tank'
         };
       }
+      case 'mtProvoke': {
+        const job = partyComp.mt || 'WAR';
+        return {
+          job,
+          skill: 'Provoke',
+          carryOver: false,
+          target: action.target || 'Boss',
+          timingNote: action.timingNote,
+          isOptional: action.isOptional,
+          slotTag: 'MT'
+        };
+      }
+      case 'otProvoke': {
+        const job = partyComp.ot || 'PLD';
+        return {
+          job,
+          skill: 'Provoke',
+          carryOver: false,
+          target: action.target || 'Boss',
+          timingNote: action.timingNote,
+          isOptional: action.isOptional,
+          slotTag: 'OT'
+        };
+      }
     }
   }
 
@@ -378,6 +402,7 @@ export function actionAppliesToJob(action: PlanAction, job: JobId, partyComp: Pa
     case 'mtInvuln':
     case 'mtEmbraceMit':
     case 'mtSupport':
+    case 'mtProvoke':
       return partyComp.mt === job || (TANK_JOBS.includes(job) && partyComp.ot !== job);
 
     // OT specific actions
@@ -387,6 +412,7 @@ export function actionAppliesToJob(action: PlanAction, job: JobId, partyComp: Pa
     case 'otInvuln':
     case 'otEmbraceMit':
     case 'otSupport':
+    case 'otProvoke':
       return partyComp.ot === job;
 
     case 'tankLb3':
@@ -429,6 +455,9 @@ export function getSkillNameForJob(action: PlanAction, job: JobId): string {
     }
     if (action.roleSlot === 'otEmbraceMit') {
       return getTankEmbraceMit(job, 'ot');
+    }
+    if (action.roleSlot === 'mtProvoke' || action.roleSlot === 'otProvoke') {
+      return 'Provoke';
     }
     if (action.roleSlot === 'tankLb3') {
       return 'Tank LB3';

@@ -53,6 +53,8 @@ export type RoleSlot =
   | 'mtSupport'       // MT targeted single-target mitigation on OT
   | 'mtEmbraceMit'    // MT defensives for dual-tankbuster
   | 'otEmbraceMit'    // OT defensives for dual-tankbuster
+  | 'mtProvoke'       // MT Provoke (tank swap)
+  | 'otProvoke'       // OT Provoke (tank swap)
   | 'tankLb3';        // Tank Limit Break 3
 
 export interface PlanAction {

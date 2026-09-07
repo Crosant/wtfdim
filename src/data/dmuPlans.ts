@@ -15,14 +15,15 @@ const LPDU_ROWS: PlanRow[] = [
     damageType: 'magic',
     rawDamage: '1,300,000',
     actions: [
-      { roleSlot: 'mtBusterMit', skill: 'MT Tankbuster CDs', target: 'Self' },
-      { roleSlot: 'otSupport', skill: 'OT Single-Target Mit', target: 'MT' },
+      { roleSlot: 'mtBusterMit', skill: 'MT Tankbuster CDs', target: 'Self', timingNote: 'Kitchen Sink (40% + Rampart + Short CD)' },
+      { roleSlot: 'otSupport', skill: 'OT Single-Target Mit', target: 'MT', timingNote: 'Buddy Mit' },
+      { roleSlot: 'otProvoke', skill: 'Provoke', target: 'Boss', timingNote: 'Provoke during castbar' },
       { job: 'WHM', skill: 'Aquaveil + Benison', target: 'MT', timingNote: 'Tetra OT' },
-      { job: 'AST', skill: 'Exaltation + CI', target: 'MT', timingNote: 'Ewer card OT' },
-      { job: 'SCH', skill: 'Excogitation', target: 'MT' },
-      { job: 'SGE', skill: 'Taurochole + Krasis', target: 'MT', timingNote: 'E.Prog between hits' },
+      { job: 'AST', skill: 'Exaltation + CI', target: 'MT', timingNote: 'All ST mits MT -> Ewer OT' },
+      { job: 'SCH', skill: 'Protraction + Excog', target: 'MT', timingNote: 'Spreadlo off MT after 2nd hit, Excog OT' },
+      { job: 'SGE', skill: 'Haima + Taurochole', target: 'MT', timingNote: 'E.Prog between hits then prep Zoe' },
     ],
-    notes: 'Heavy magic tankbuster on MT. Requires active tank mitigation and single-target healer defensives.'
+    notes: 'Two hits: targets MT 1st in enmity then retargets 2nd in enmity. MT Kitchen Sinks (40% + Rampart + Short CD), OT Buddy Mits and Provokes during castbar to take enmity.'
   },
   {
     mechanicId: 'dmu-p1-03',
@@ -98,19 +99,22 @@ const LPDU_ROWS: PlanRow[] = [
   },
   {
     mechanicId: 'dmu-p1-07',
-    timestamp: '01:06',
+    timestamp: '01:05',
     mechanicName: 'Hyperdrive',
     damageType: 'magic',
     rawDamage: '700,000 x3',
     actions: [
+      { roleSlot: 'otBusterMit', skill: 'OT Tankbuster CDs', target: 'Self', timingNote: 'Kitchen Sink (40% + Rampart + Short CD)' },
+      { roleSlot: 'mtSupport', skill: 'MT Single-Target Mit', target: 'OT', timingNote: 'Buddy Mit' },
       { roleSlot: 'mtReprisal', skill: 'Reprisal (MT)', carryOver: true },
-      { roleSlot: 'mtInvuln', skill: 'MT Invuln / Full Defensives', target: 'Self' },
-      { job: 'WHM', skill: 'Benison', target: 'MT' },
-      { job: 'AST', skill: 'CI + Bole', target: 'MT' },
+      { job: 'WHM', skill: 'Divine Benison', target: 'OT' },
+      { job: 'AST', skill: 'Celestial Intersection', target: 'OT', timingNote: 'Card mits + CI OT' },
+      { job: 'SCH', skill: 'Aetherpact (Tether)', target: 'OT', timingNote: 'Fairy tether OT' },
       { job: 'SCH', skill: 'Sacred Soil', carryOver: true },
+      { job: 'SGE', skill: 'Taurochole', target: 'OT' },
       { job: 'SGE', skill: 'Kerachole', carryOver: true },
     ],
-    notes: 'Rapid 3-hit buster covered by late Soil/Kerachole and Reprisal.'
+    notes: 'No castbar, occurs immediately after Light of Judgment on current tank (OT). OT Kitchen Sinks, MT Buddy Mits.'
   },
   {
     mechanicId: 'dmu-p1-08',
@@ -124,6 +128,19 @@ const LPDU_ROWS: PlanRow[] = [
       { job: 'SGE', skill: 'Kerachole + Philosophia', timingNote: '1st puddle stack' },
     ],
     notes: 'First wave of puddle drops and movement healing.'
+  },
+  {
+    mechanicId: 'dmu-p1-08b',
+    timestamp: '01:38',
+    mechanicName: 'Revolting Ruin III (TB3)',
+    damageType: 'magic',
+    rawDamage: '1,300,000',
+    actions: [
+      { roleSlot: 'mtProvoke', skill: 'Provoke', target: 'Boss', timingNote: 'Provoke during castbar' },
+      { roleSlot: 'otInvuln', skill: 'OT Invulnerability', target: 'Self' },
+      { job: 'WHM', skill: 'Benediction', target: 'OT', timingNote: 'If DRK Living Dead' },
+    ],
+    notes: 'Magic tankbuster on OT. OT Invulnerabilities take both hits; MT Provokes during castbar to swap boss back to MT.'
   },
   {
     mechanicId: 'dmu-p1-09',
@@ -175,6 +192,21 @@ const LPDU_ROWS: PlanRow[] = [
       { roleSlot: 'caster2', skill: 'Addle', timingNote: 'If double Caster' },
     ],
     notes: 'Heavy raidwide preceding directional arrows.'
+  },
+  {
+    mechanicId: 'dmu-p1-11b',
+    timestamp: '02:16',
+    mechanicName: 'Hyperdrive (TB4)',
+    damageType: 'magic',
+    rawDamage: '700,000 x3',
+    actions: [
+      { roleSlot: 'mtInvuln', skill: 'MT Invulnerability', target: 'Self', timingNote: 'Kitchen sink if WAR' },
+      { roleSlot: 'mtReprisal', skill: 'Reprisal (MT)', carryOver: true },
+      { job: 'AST', skill: 'Neutral Sect', timingNote: 'Off cooldown' },
+      { job: 'SCH', skill: 'Sacred Soil', carryOver: true },
+      { job: 'SGE', skill: 'Kerachole', carryOver: true },
+    ],
+    notes: 'No castbar, occurs immediately after Light of Judgment 2 on MT. MT uses Invulnerability (WAR can alternatively kitchen sink this and save Holmgang for P2 Ultimate Embrace).'
   },
   {
     mechanicId: 'dmu-p1-12',
@@ -1244,6 +1276,9 @@ function createPlanVariant(
 // 2. IKUYA MITTY COMPILE (AUTHENTIC SHEET DATA)
 // ==========================================
 const IKUYA_OVERRIDES: Record<string, { actions?: PlanRow['actions']; notes?: string }> = {
+  'dmu-p1-01': {
+    notes: 'Ikuya: Revolting Ruin III targets 1st in enmity and retargets to 2nd in enmity when the castbar ends. MT Kitchen Sink, OT Buddy Mit + Provoke during castbar.'
+  },
   'dmu-p1-03': {
     actions: [
       { roleSlot: 'mtPartyMit', skill: 'Tank 90s (MT)', timingNote: 'GNB/DRK as boss centers' },
@@ -1293,12 +1328,18 @@ const IKUYA_OVERRIDES: Record<string, { actions?: PlanRow['actions']; notes?: st
     ],
     notes: 'Ikuya: Press mitigation late into castbar so 15s buffs persist into upcoming Hyperdrive busters.'
   },
+  'dmu-p1-07': {
+    notes: 'Ikuya: Hyperdrive does not have a castbar and occurs immediately after Light of Judgment on OT. MT Buddy Mit, OT Kitchen Sink.'
+  },
   'dmu-p1-08': {
     actions: [
       { job: 'AST', skill: 'Macrocosmos' },
       { job: 'SCH', skill: 'Sacred Soil + Seraphism' },
     ],
     notes: 'First gravity stack drop.'
+  },
+  'dmu-p1-08b': {
+    notes: 'Ikuya: Revolting Ruin III. MT Provoke during castbar, OT Invulnerability.'
   },
   'dmu-p1-09': {
     actions: [
@@ -1329,6 +1370,9 @@ const IKUYA_OVERRIDES: Record<string, { actions?: PlanRow['actions']; notes?: st
       { roleSlot: 'melee1', skill: 'Feint' },
     ],
     notes: 'Second raidwide before Tele-trouncing.'
+  },
+  'dmu-p1-11b': {
+    notes: 'Ikuya: Hyperdrive (3x). MT Invulnerability. WAR can alternatively kitchen sink this and Holmgang the first Ultimate Embrace in P2.'
   },
   'dmu-p1-13': {
     actions: [
@@ -1712,12 +1756,13 @@ const BIBLES_OVERRIDES: Record<string, { actions?: PlanRow['actions']; notes?: s
     actions: [
       { roleSlot: 'mtBusterMit', skill: 'MT Tankbuster CDs', target: 'Self' },
       { roleSlot: 'otSupport', skill: 'OT Single-Target Mit', target: 'MT' },
+      { roleSlot: 'otProvoke', skill: 'Provoke', target: 'Boss', timingNote: 'Provoke during castbar' },
       { job: 'WHM', skill: 'Aquaveil + Benison', target: 'MT', timingNote: 'Tetra OT' },
       { job: 'AST', skill: 'Exaltation + CI', target: 'MT', timingNote: '-5s Star / Ewer OT' },
-      { job: 'SCH', skill: 'Excogitation', target: 'MT' },
+      { job: 'SCH', skill: 'Protraction + Excog', target: 'MT', timingNote: 'Spreadlo off MT after 2nd hit, Excog OT' },
       { job: 'SGE', skill: 'Taurochole + Krasis', target: 'MT', timingNote: 'between hits' },
     ],
-    notes: 'Heavy magic tankbuster on MT. Swap Kardia (SGE) or single-target heals (Tetra/Ewer) to OT immediately after for incoming autos.'
+    notes: 'Bibles: Heavy magic tankbuster on MT. OT Provokes during castbar to swap. Swap Kardia (SGE) or single-target heals (Tetra/Ewer) to OT immediately after for incoming autos.'
   },
   'dmu-p1-03': {
     actions: [
@@ -1748,15 +1793,29 @@ const BIBLES_OVERRIDES: Record<string, { actions?: PlanRow['actions']; notes?: s
   'dmu-p1-06': {
     actions: [
       { roleSlot: 'mtReprisal', skill: 'Reprisal (MT)', timingNote: 'late castbar' },
-      { job: 'WHM', skill: 'Asylum', timingNote: 'Asylum + Benison MT' },
-      { job: 'AST', skill: 'Collective Unconscious', timingNote: 'Card mits + CI MT' },
+      { job: 'WHM', skill: 'Asylum', timingNote: 'late castbar' },
+      { job: 'AST', skill: 'Collective Unconscious', timingNote: 'late castbar' },
       { job: 'SCH', skill: 'Sacred Soil', carryOver: true, timingNote: '>=3s on confetti' },
       { job: 'SGE', skill: 'Kerachole + E.Prog', timingNote: '@ 1 confetti' },
       { roleSlot: 'melee2', skill: 'Feint' },
       { roleSlot: 'physRanged2', skill: 'Phys Ranged Mit' },
       { roleSlot: 'caster2', skill: 'Addle' },
     ],
-    notes: 'Bibles: Cooldown preservation. Late soil persists into Hyperdrive; WHM prepares Benison for MT.'
+    notes: 'Bibles: Cooldown preservation. Late soil persists into Hyperdrive; WHM prepares Benison for OT.'
+  },
+  'dmu-p1-07': {
+    actions: [
+      { roleSlot: 'otBusterMit', skill: 'OT Tankbuster CDs', target: 'Self' },
+      { roleSlot: 'mtSupport', skill: 'MT Single-Target Mit', target: 'OT' },
+      { roleSlot: 'mtReprisal', skill: 'Reprisal (MT)', carryOver: true },
+      { job: 'WHM', skill: 'Divine Benison', target: 'OT' },
+      { job: 'AST', skill: 'Celestial Intersection', target: 'OT', timingNote: 'Card mits + CI OT' },
+      { job: 'SCH', skill: 'Aetherpact (Tether)', target: 'OT', timingNote: 'Fairy tether OT' },
+      { job: 'SCH', skill: 'Sacred Soil', carryOver: true },
+      { job: 'SGE', skill: 'Taurochole', target: 'OT' },
+      { job: 'SGE', skill: 'Kerachole', carryOver: true },
+    ],
+    notes: 'Bibles: Hyperdrive 1 on OT. MT provides Buddy Mit, OT Kitchen Sinks.'
   },
   'dmu-p1-08': {
     actions: [
@@ -1767,6 +1826,14 @@ const BIBLES_OVERRIDES: Record<string, { actions?: PlanRow['actions']; notes?: s
     ],
     notes: 'Bibles: Gravitas II Part 1. High-efficiency automated healing with Bell and Macrocosmos.'
   },
+  'dmu-p1-08b': {
+    actions: [
+      { roleSlot: 'mtProvoke', skill: 'Provoke', target: 'Boss', timingNote: 'Provoke during castbar' },
+      { roleSlot: 'otInvuln', skill: 'OT Invulnerability', target: 'Self' },
+      { job: 'WHM', skill: 'Benediction', target: 'OT', timingNote: 'If DRK Living Dead' },
+    ],
+    notes: 'Bibles: Revolting Ruin 2. OT Invuln, MT Provokes during castbar to take boss back.'
+  },
   'dmu-p1-09': {
     actions: [
       { job: 'WHM', skill: 'Plenary Indulgence', timingNote: 'walking to middle' },
@@ -1775,6 +1842,16 @@ const BIBLES_OVERRIDES: Record<string, { actions?: PlanRow['actions']; notes?: s
       { job: 'SGE', skill: 'Holos + Kerachole', timingNote: 'Holos @ 14s confetti' },
     ],
     notes: 'Bibles: Reqcat SGE Bible: Holos at 14s on confetti debuff. Crow SCH: Soil with >=3s left to carry into raidwide.'
+  },
+  'dmu-p1-11b': {
+    actions: [
+      { roleSlot: 'mtInvuln', skill: 'MT Invulnerability', target: 'Self', timingNote: 'Kitchen sink if WAR' },
+      { roleSlot: 'mtReprisal', skill: 'Reprisal (MT)', carryOver: true },
+      { job: 'AST', skill: 'Neutral Sect', timingNote: 'Off cd' },
+      { job: 'SCH', skill: 'Sacred Soil', carryOver: true },
+      { job: 'SGE', skill: 'Kerachole', carryOver: true },
+    ],
+    notes: 'Bibles: Hyperdrive 2 on MT. MT Invulns (or Kitchen Sinks if WAR saving Holmgang for P2).'
   },
   'dmu-p1-12': {
     actions: [

@@ -15,7 +15,7 @@ export const DMU_TIMELINE: Mechanic[] = [
     damageType: 'magic',
     rawDamage: '1,300,000',
     severity: 'tankbuster',
-    description: 'Heavy magic tankbuster on MT.'
+    description: 'Heavy 2-hit magic tankbuster. Hits MT first, then retargets 2nd in enmity. OT Provokes during castbar to swap.'
   },
   {
     id: 'dmu-p1-02',
@@ -81,13 +81,13 @@ export const DMU_TIMELINE: Mechanic[] = [
     id: 'dmu-p1-07',
     phase: 1,
     phaseName: 'Phase 1: Kefka',
-    timestamp: '01:06',
-    seconds: 66,
+    timestamp: '01:05',
+    seconds: 65,
     name: 'Hyperdrive',
     damageType: 'magic',
     rawDamage: '700,000 x3',
     severity: 'tankbuster',
-    description: 'Rapid 3-hit tankbuster requiring heavy active mitigation.'
+    description: 'Rapid 3-hit tankbuster immediately following Light of Judgment on current tank (OT). OT Kitchen Sinks, MT Buddy Mits.'
   },
   {
     id: 'dmu-p1-08',
@@ -100,6 +100,18 @@ export const DMU_TIMELINE: Mechanic[] = [
     rawDamage: 'Gravity Soaks',
     severity: 'heavy_mechanic',
     description: 'First set of puddle drops and gravity soak sequence.'
+  },
+  {
+    id: 'dmu-p1-08b',
+    phase: 1,
+    phaseName: 'Phase 1: Kefka',
+    timestamp: '01:38',
+    seconds: 98,
+    name: 'Revolting Ruin III (TB3)',
+    damageType: 'magic',
+    rawDamage: '1,300,000',
+    severity: 'tankbuster',
+    description: 'Magic tankbuster on OT. OT Invulnerability takes both hits; MT Provokes during castbar to swap boss back.'
   },
   {
     id: 'dmu-p1-09',
@@ -138,6 +150,18 @@ export const DMU_TIMELINE: Mechanic[] = [
     description: 'Second heavy raidwide before movement phase.'
   },
   {
+    id: 'dmu-p1-11b',
+    phase: 1,
+    phaseName: 'Phase 1: Kefka',
+    timestamp: '02:16',
+    seconds: 136,
+    name: 'Hyperdrive (TB4)',
+    damageType: 'magic',
+    rawDamage: '700,000 x3',
+    severity: 'tankbuster',
+    description: 'Rapid 3-hit tankbuster immediately following Light of Judgment 2 on MT. MT uses Invulnerability (Kitchen Sink if WAR).'
+  },
+  {
     id: 'dmu-p1-12',
     phase: 1,
     phaseName: 'Phase 1: Kefka',
@@ -153,8 +177,8 @@ export const DMU_TIMELINE: Mechanic[] = [
     id: 'dmu-p1-13',
     phase: 1,
     phaseName: 'Phase 1: Kefka',
-    timestamp: '02:45',
-    seconds: 165,
+    timestamp: '02:48',
+    seconds: 168,
     name: 'Double-Trouble Trap 3',
     damageType: 'magic',
     rawDamage: '165,000',
