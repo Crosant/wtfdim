@@ -43,6 +43,84 @@ export function getTankBusterKitchenSink(job: JobId): string {
   }
 }
 
+// Resolves specific tank buster defensives based on requested mitigation profile and job
+export function resolveTankBusterMit(skill: string, job: JobId): string {
+  const s = (skill || '').toLowerCase();
+
+  // 1. Kitchen Sink: e.g. "MT Tankbuster CDs", "OT Tankbuster CDs", "Kitchen Sink"
+  if (s.includes('tankbuster cds') || s.includes('kitchen sink')) {
+    switch (job) {
+      case 'WAR': return 'Damnation + Bloodwhetting + Rampart';
+      case 'PLD': return 'Sentinel + Holy Sheltron + Rampart';
+      case 'DRK': return 'Shadowed Vigil + TBN + Rampart';
+      case 'GNB': return 'Great Nebula + Corundum + Rampart';
+      default: return '40% + Rampart + Short CD';
+    }
+  }
+
+  // 2. 40% + Short CD / Mit (WITHOUT Rampart): e.g. "40% Mit + Short CD", "40% + Short Mit"
+  if (s.includes('40%') && (s.includes('short') || s.includes('cd')) && !s.includes('rampart')) {
+    switch (job) {
+      case 'WAR': return 'Damnation + Bloodwhetting';
+      case 'PLD': return 'Sentinel + Holy Sheltron';
+      case 'DRK': return 'Shadowed Vigil + TBN';
+      case 'GNB': return 'Great Nebula + Corundum';
+      default: return '40% Mit + Short CD';
+    }
+  }
+
+  // 3. Rampart + 90s + Short CD
+  if (s.includes('rampart') && (s.includes('90s') || s.includes('defense')) && s.includes('short')) {
+    switch (job) {
+      case 'WAR': return 'Rampart + Thrill + Bloodwhetting';
+      case 'PLD': return 'Rampart + Bulwark + Holy Sheltron';
+      case 'DRK': return 'Rampart + Dark Mind + TBN';
+      case 'GNB': return 'Rampart + Camouflage + Corundum';
+      default: return 'Rampart + 90s + Short CD';
+    }
+  }
+
+  // 4. Rampart + 40% Mit
+  if (s.includes('rampart') && s.includes('40%')) {
+    switch (job) {
+      case 'WAR': return 'Damnation + Rampart';
+      case 'PLD': return 'Sentinel + Rampart';
+      case 'DRK': return 'Shadowed Vigil + Rampart';
+      case 'GNB': return 'Great Nebula + Rampart';
+      default: return 'Rampart + 40% Mit';
+    }
+  }
+
+  // 5. Rampart + Short Mit
+  if (s.includes('rampart') && s.includes('short')) {
+    switch (job) {
+      case 'WAR': return 'Rampart + Bloodwhetting';
+      case 'PLD': return 'Rampart + Holy Sheltron';
+      case 'DRK': return 'Rampart + TBN';
+      case 'GNB': return 'Rampart + Corundum';
+      default: return 'Rampart + Short CD';
+    }
+  }
+
+  // 6. Just Rampart
+  if (s.trim() === 'rampart') {
+    return 'Rampart';
+  }
+
+  // 7. Just Short CD
+  if (s.includes('short cd') || s.includes('short mit')) {
+    switch (job) {
+      case 'WAR': return 'Bloodwhetting';
+      case 'PLD': return 'Holy Sheltron';
+      case 'DRK': return 'The Blackest Night';
+      case 'GNB': return 'Heart of Corundum';
+      default: return 'Short CD';
+    }
+  }
+
+  return skill;
+}
+
 // Resolves targeted single-target defensive from one tank onto another
 export function getTankSupportName(job: JobId): string {
   switch (job) {
@@ -225,7 +303,7 @@ export function resolveActionForParty(action: PlanAction, partyComp: PartyCompos
         const job = partyComp.mt || 'WAR';
         return {
           job,
-          skill: getTankBusterKitchenSink(job),
+          skill: resolveTankBusterMit(action.skill, job),
           carryOver: action.carryOver,
           target: action.target || 'Self',
           timingNote: action.timingNote,
@@ -237,7 +315,7 @@ export function resolveActionForParty(action: PlanAction, partyComp: PartyCompos
         const job = partyComp.ot || 'PLD';
         return {
           job,
-          skill: getTankBusterKitchenSink(job),
+          skill: resolveTankBusterMit(action.skill, job),
           carryOver: action.carryOver,
           target: action.target || 'Self',
           timingNote: action.timingNote,
@@ -445,7 +523,7 @@ export function getSkillNameForJob(action: PlanAction, job: JobId): string {
       return getTankInvulnName(job);
     }
     if (action.roleSlot === 'mtBusterMit' || action.roleSlot === 'otBusterMit') {
-      return getTankBusterKitchenSink(job);
+      return resolveTankBusterMit(action.skill, job);
     }
     if (action.roleSlot === 'otSupport' || action.roleSlot === 'mtSupport') {
       return getTankSupportName(job);
