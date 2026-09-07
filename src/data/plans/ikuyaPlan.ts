@@ -1050,6 +1050,7 @@ export const IKUYA_PLAN_ROWS: PlanRow[] = [
       { roleSlot: 'mtInvuln', skill: 'Invulnerability 1', target: 'Self', timingNote: 'Press just before debuff expires' },
       { roleSlot: 'mtProvoke', skill: 'Provoke', target: 'Boss', timingNote: 'Provoke on debuff application' },
       { roleSlot: 'otBusterMit', skill: 'Rampart + Short CD', target: 'Self', carryOver: true },
+      { roleSlot: 'otSupport', skill: 'OT Buddy Mit', target: 'MT', timingNote: 'PLD/DRK/GNB only' },
       { roleSlot: 'melee2', skill: 'Feint', carryOver: true },
     ],
     notes: 'Ikuya: Flare/Holy 1. Invuln 1 Tank (WAR > DRK > GNB > PLD) invulns just before debuff expires and Provokes on debuff to solo Fell Forces 2 autos. Tank 2 has main threat to not get Holy.'
@@ -1160,6 +1161,7 @@ export const IKUYA_PLAN_ROWS: PlanRow[] = [
       { roleSlot: 'otInvuln', skill: 'Invulnerability 2', target: 'Self', timingNote: 'Press just before debuff expires' },
       { roleSlot: 'otProvoke', skill: 'Provoke', target: 'Boss', timingNote: 'Provoke on debuff application' },
       { roleSlot: 'mtBusterMit', skill: 'Rampart + 40% Mit', target: 'Self', carryOver: true },
+      { roleSlot: 'mtSupport', skill: 'MT Buddy Mit', target: 'OT', timingNote: 'PLD/DRK/GNB only' },
     ],
     notes: 'Ikuya: Flare/Holy 2. Invuln 2 Tank (PLD > GNB > DRK > WAR) invulns just before debuff expires and Provokes on debuff to solo Fell Forces 4 autos 1 & 2. Auto 3 must be shared as invuln expires.'
   },

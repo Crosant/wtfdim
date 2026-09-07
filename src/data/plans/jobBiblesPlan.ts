@@ -1110,6 +1110,7 @@ export const JOB_BIBLES_PLAN_ROWS: PlanRow[] = [
       { roleSlot: 'mtInvuln', skill: 'Invulnerability 1', target: 'Self', timingNote: 'Press just before Flare/Holy expires' },
       { roleSlot: 'mtProvoke', skill: 'Provoke', target: 'Boss', timingNote: 'Provoke on debuff application' },
       { roleSlot: 'otBusterMit', skill: 'Rampart + Short Mit', target: 'Self' },
+      { roleSlot: 'otSupport', skill: 'OT Buddy Mit', target: 'MT', timingNote: 'PLD/DRK/GNB only' },
       { roleSlot: 'melee1', skill: 'Feint', carryOver: true },
       { roleSlot: 'physRanged2', skill: 'Phys Ranged Mit', carryOver: true },
     ],
@@ -1223,6 +1224,7 @@ export const JOB_BIBLES_PLAN_ROWS: PlanRow[] = [
       { roleSlot: 'otInvuln', skill: 'Invulnerability 2', target: 'Self', timingNote: 'Press just before Flare/Holy expires' },
       { roleSlot: 'otProvoke', skill: 'Provoke', target: 'Boss', timingNote: 'Provoke on debuff application' },
       { roleSlot: 'mtBusterMit', skill: 'Rampart + 40% Mit', target: 'Self' },
+      { roleSlot: 'mtSupport', skill: 'MT Buddy Mit', target: 'OT', timingNote: 'PLD/DRK/GNB only' },
     ],
     notes: 'Bibles: Flare/Holy 2. Invuln 2 Tank (PLD > GNB > DRK > WAR) invulns and Provokes on debuff application to solo Fell Forces 4 autos 1 & 2. Auto 3 shared with Rampart + Short Mit.'
   },

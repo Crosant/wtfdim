@@ -347,6 +347,9 @@ export function resolveActionForParty(action: PlanAction, partyComp: PartyCompos
       }
       case 'otSupport': {
         const job = partyComp.ot || 'PLD';
+        if (action.timingNote?.includes('PLD/DRK/GNB only') && job === 'WAR') {
+          return null;
+        }
         return {
           job,
           skill: getTankSupportName(job),
@@ -359,6 +362,9 @@ export function resolveActionForParty(action: PlanAction, partyComp: PartyCompos
       }
       case 'mtSupport': {
         const job = partyComp.mt || 'WAR';
+        if (action.timingNote?.includes('PLD/DRK/GNB only') && job === 'WAR') {
+          return null;
+        }
         return {
           job,
           skill: getTankSupportName(job),
@@ -501,8 +507,13 @@ export function actionAppliesToJob(action: PlanAction, job: JobId, partyComp: Pa
     case 'mtBusterMit':
     case 'mtInvuln':
     case 'mtEmbraceMit':
-    case 'mtSupport':
     case 'mtProvoke':
+      return partyComp.mt === job || (TANK_JOBS.includes(job) && partyComp.ot !== job);
+
+    case 'mtSupport':
+      if (action.timingNote?.includes('PLD/DRK/GNB only') && job === 'WAR') {
+        return false;
+      }
       return partyComp.mt === job || (TANK_JOBS.includes(job) && partyComp.ot !== job);
 
     // OT specific actions
@@ -511,8 +522,13 @@ export function actionAppliesToJob(action: PlanAction, job: JobId, partyComp: Pa
     case 'otBusterMit':
     case 'otInvuln':
     case 'otEmbraceMit':
-    case 'otSupport':
     case 'otProvoke':
+      return partyComp.ot === job;
+
+    case 'otSupport':
+      if (action.timingNote?.includes('PLD/DRK/GNB only') && job === 'WAR') {
+        return false;
+      }
       return partyComp.ot === job;
 
     case 'tankLb3':
