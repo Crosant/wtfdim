@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
+  <defs>
+    <linearGradient id="shieldGrad" x1="0" y1="0" x2="64" y2="64" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#3b82f6" />
+      <stop offset="50%" stop-color="#6366f1" />
+      <stop offset="100%" stop-color="#10b981" />
+    </linearGradient>
+  </defs>
+  <rect width="64" height="64" rx="16" fill="#0f121a"/>
+  <!-- Stylized Shield -->
+  <path d="M32 10L48 18V32C48 43 41 51 32 54C23 51 16 43 16 32V18L32 10Z" fill="url(#shieldGrad)" opacity="0.2"/>
+  <path d="M32 12L46 19V31C46 41 39.5 48.5 32 51.5C24.5 48.5 18 41 18 31V19L32 12Z" stroke="url(#shieldGrad)" stroke-width="3" stroke-linejoin="round"/>
+  <!-- Cross Swords / Mit Sparks -->
+  <path d="M26 26L38 38M38 26L26 38" stroke="#ffffff" stroke-width="3" stroke-linecap="round"/>
+  <circle cx="32" cy="32" r="3" fill="#f59e0b"/>
+</svg>
