@@ -11,7 +11,7 @@ const LPDU_ROWS: PlanRow[] = [
   {
     mechanicId: 'dmu-p1-01',
     timestamp: '00:16',
-    mechanicName: 'Revolting Ruin III',
+    mechanicName: 'Revolting Ruin III (TB1)',
     damageType: 'magic',
     rawDamage: '1,300,000',
     actions: [
@@ -24,6 +24,20 @@ const LPDU_ROWS: PlanRow[] = [
       { job: 'SGE', skill: 'Haima + Taurochole', target: 'MT', timingNote: 'E.Prog between hits then prep Zoe' },
     ],
     notes: 'Two hits: targets MT 1st in enmity then retargets 2nd in enmity. MT Kitchen Sinks (40% + Rampart + Short CD), OT Buddy Mits and Provokes during castbar to take enmity.'
+  },
+  {
+    mechanicId: 'dmu-p1-02',
+    timestamp: '00:29',
+    mechanicName: 'Graven Image (Majin)',
+    damageType: 'magic',
+    rawDamage: 'Stage Setup',
+    actions: [
+      { roleSlot: 'mtPartyMit', skill: 'Tank 90s (MT)', timingNote: 'Pre-pop as boss re-centers' },
+      { roleSlot: 'otPartyMit', skill: 'Tank 90s (OT)', timingNote: 'During statue cast' },
+      { job: 'SCH', skill: 'Spreadlo Prep', timingNote: 'Prep for Mystery Magic' },
+      { job: 'SGE', skill: 'Zoe E.Prog', timingNote: 'Prep for Mystery Magic' },
+    ],
+    notes: 'Boss re-centers north to cast Graven Image (statue mechanics). Pre-pop 90s tank party mitigation as boss re-centers so it covers Mystery Magic and Wave Cannon.'
   },
   {
     mechanicId: 'dmu-p1-03',
@@ -100,7 +114,7 @@ const LPDU_ROWS: PlanRow[] = [
   {
     mechanicId: 'dmu-p1-07',
     timestamp: '01:05',
-    mechanicName: 'Hyperdrive',
+    mechanicName: 'Hyperdrive (TB2)',
     damageType: 'magic',
     rawDamage: '700,000 x3',
     actions: [
@@ -276,7 +290,7 @@ const LPDU_ROWS: PlanRow[] = [
   {
     mechanicId: 'dmu-p2-01',
     timestamp: '00:24',
-    mechanicName: 'Ultimate Embrace',
+    mechanicName: 'Ultimate Embrace (TB1)',
     damageType: 'magic',
     rawDamage: '1,200,000',
     actions: [
@@ -461,7 +475,7 @@ const LPDU_ROWS: PlanRow[] = [
   {
     mechanicId: 'dmu-p2-12',
     timestamp: '02:54',
-    mechanicName: 'Wings of Destruction',
+    mechanicName: 'Wings of Destruction (Dual Cleave TB)',
     damageType: 'magic',
     rawDamage: '850,000',
     actions: [
@@ -480,7 +494,7 @@ const LPDU_ROWS: PlanRow[] = [
   {
     mechanicId: 'dmu-p2-13',
     timestamp: '03:01',
-    mechanicName: 'Ultimate Embrace 2',
+    mechanicName: 'Ultimate Embrace 2 (TB2)',
     damageType: 'magic',
     rawDamage: '1,200,000',
     actions: [
@@ -535,7 +549,7 @@ const LPDU_ROWS: PlanRow[] = [
   {
     mechanicId: 'dmu-p3-03',
     timestamp: '01:36',
-    mechanicName: 'Thunder III (1st Set)',
+    mechanicName: 'Thunder III (1st Set - TB1)',
     damageType: 'magic',
     rawDamage: '950,000',
     actions: [
@@ -617,7 +631,7 @@ const LPDU_ROWS: PlanRow[] = [
   {
     mechanicId: 'dmu-p3-07b',
     timestamp: '02:35',
-    mechanicName: 'Thunder III (2nd Set)',
+    mechanicName: 'Thunder III (2nd Set - TB2 Chaos Invuln)',
     damageType: 'magic',
     rawDamage: '700,000 x2',
     actions: [
@@ -646,7 +660,7 @@ const LPDU_ROWS: PlanRow[] = [
   {
     mechanicId: 'dmu-p3-08b',
     timestamp: '02:52',
-    mechanicName: 'Thunder III (3rd Set)',
+    mechanicName: 'Thunder III (3rd Set - TB3 Double Mit)',
     damageType: 'magic',
     rawDamage: '700,000 x2',
     actions: [
@@ -692,7 +706,7 @@ const LPDU_ROWS: PlanRow[] = [
   {
     mechanicId: 'dmu-p3-10b',
     timestamp: '03:34',
-    mechanicName: 'Thunder III (4th Set)',
+    mechanicName: 'Thunder III (4th Set - TB4 Exdeath Invuln)',
     damageType: 'magic',
     rawDamage: '700,000 x2',
     actions: [
@@ -760,7 +774,7 @@ const LPDU_ROWS: PlanRow[] = [
   {
     mechanicId: 'dmu-p3-15',
     timestamp: '04:15',
-    mechanicName: 'Thunder III (5th Set)',
+    mechanicName: 'Thunder III (5th Set - TB5 Double Mit)',
     damageType: 'magic',
     rawDamage: '950,000',
     actions: [
