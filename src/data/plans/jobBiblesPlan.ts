@@ -16,8 +16,8 @@ export const JOB_BIBLES_PLAN_ROWS: PlanRow[] = [
     damageType: 'magic',
     rawDamage: '1,300,000',
     actions: [
-      { roleSlot: 'mtBusterMit', skill: 'MT Tankbuster CDs', target: 'Self' },
-      { roleSlot: 'otSupport', skill: 'OT Single-Target Mit', target: 'MT' },
+      { roleSlot: 'mtBusterMit', skill: 'MT Tankbuster CDs', target: 'Self', timingNote: 'Kitchen Sink (40% + Rampart + Short CD)' },
+      { roleSlot: 'otSupport', skill: 'OT Single-Target Mit', target: 'MT', timingNote: 'Buddy Mit' },
       { roleSlot: 'otProvoke', skill: 'Provoke', target: 'Boss', timingNote: 'Provoke during castbar' },
       { job: 'WHM', skill: 'Aquaveil + Benison', target: 'MT', timingNote: 'Tetra OT' },
       { job: 'AST', skill: 'Exaltation + CI', target: 'MT', timingNote: '-5s Star / Ewer OT' },
@@ -46,8 +46,8 @@ export const JOB_BIBLES_PLAN_ROWS: PlanRow[] = [
     damageType: 'magic',
     rawDamage: '220,000',
     actions: [
-      { roleSlot: 'mtPartyMit', skill: 'Tank 90s (MT)' },
-      { roleSlot: 'otPartyMit', skill: 'Tank 90s (OT)' },
+      { roleSlot: 'mtPartyMit', skill: 'Tank 90s (MT)', timingNote: 'As Kefka re-centers' },
+      { roleSlot: 'otPartyMit', skill: 'Tank 90s (OT)', timingNote: 'During statue cast' },
       { roleSlot: 'otReprisal', skill: 'Reprisal (OT)' },
       { job: 'WHM', skill: 'Temperance', timingNote: 'spread/stacks' },
       { job: 'AST', skill: 'Sun Sign', timingNote: 'tethers + CU post-KB' },
@@ -102,7 +102,7 @@ export const JOB_BIBLES_PLAN_ROWS: PlanRow[] = [
     damageType: 'magic',
     rawDamage: '260,000',
     actions: [
-      { roleSlot: 'mtReprisal', skill: 'Reprisal (MT)', timingNote: 'late castbar' },
+      { roleSlot: 'otReprisal', skill: 'Reprisal (OT)', timingNote: 'Late in castbar' },
       { job: 'WHM', skill: 'Asylum', timingNote: 'late castbar' },
       { job: 'AST', skill: 'Collective Unconscious', timingNote: 'late castbar' },
       { job: 'SCH', skill: 'Sacred Soil', timingNote: '>=3s on confetti', carryOver: true },
@@ -120,9 +120,9 @@ export const JOB_BIBLES_PLAN_ROWS: PlanRow[] = [
     damageType: 'magic',
     rawDamage: '700,000 x3',
     actions: [
-      { roleSlot: 'otBusterMit', skill: 'OT Tankbuster CDs', target: 'Self' },
-      { roleSlot: 'mtSupport', skill: 'MT Single-Target Mit', target: 'OT' },
-      { roleSlot: 'mtReprisal', skill: 'Reprisal (MT)', carryOver: true },
+      { roleSlot: 'otBusterMit', skill: 'OT Tankbuster CDs', target: 'Self', timingNote: 'Kitchen Sink (40% + Rampart + Short CD)' },
+      { roleSlot: 'mtSupport', skill: 'MT Single-Target Mit', target: 'OT', timingNote: 'Buddy Mit' },
+      { roleSlot: 'otReprisal', skill: 'Reprisal (OT)', carryOver: true },
       { job: 'WHM', skill: 'Divine Benison', target: 'OT' },
       { job: 'AST', skill: 'Celestial Intersection', target: 'OT', timingNote: 'Card mits + CI OT' },
       { job: 'SCH', skill: 'Aetherpact (Tether)', target: 'OT', timingNote: 'Fairy tether OT' },
@@ -169,7 +169,7 @@ export const JOB_BIBLES_PLAN_ROWS: PlanRow[] = [
     damageType: 'magic',
     rawDamage: 'Confetti Soaks',
     actions: [
-      { roleSlot: 'mtReprisal', skill: 'Reprisal (MT)', timingNote: 'Press after Gravitas to catch Confetti & LoJ' },
+      { roleSlot: 'mtReprisal', skill: 'Reprisal (MT)', timingNote: 'Rep @ 14s debuff' },
       { job: 'WHM', skill: 'Plenary Indulgence', timingNote: 'walking to middle' },
       { job: 'AST', skill: 'Collective Unconscious', timingNote: 'for confetti' },
       { job: 'SCH', skill: 'Summon Seraph + Sacred Soil', timingNote: 'gravity + confetti' },
@@ -185,7 +185,7 @@ export const JOB_BIBLES_PLAN_ROWS: PlanRow[] = [
     rawDamage: '165,000',
     actions: [
       { roleSlot: 'otReprisal', skill: 'Reprisal (OT)' },
-      { roleSlot: 'otPartyMit', skill: 'Tank 90s (OT)' },
+      { roleSlot: 'mtPartyMit', skill: 'Tank 90s (MT)', timingNote: 'Party mit @ 1s debuff' },
       { job: 'SCH', skill: 'Spreadlo + Sacred Soil', carryOver: true },
       { job: 'SGE', skill: 'Panhaima + Zoe E.Prog' },
       { roleSlot: 'physRanged', skill: 'Phys Ranged Mit', carryOver: true },
@@ -199,7 +199,7 @@ export const JOB_BIBLES_PLAN_ROWS: PlanRow[] = [
     rawDamage: '260,000',
     actions: [
       { roleSlot: 'mtReprisal', skill: 'Reprisal (MT)' },
-      { roleSlot: 'mtPartyMit', skill: 'Tank 90s (MT)' },
+      { roleSlot: 'otPartyMit', skill: 'Tank 90s (OT)' },
       { job: 'WHM', skill: 'Asylum', timingNote: 'Off cooldown' },
       { job: 'AST', skill: 'Collective Unconscious', timingNote: 'For confetti / raidwide' },
       { job: 'SCH', skill: 'Sacred Soil', carryOver: true },
@@ -234,7 +234,7 @@ export const JOB_BIBLES_PLAN_ROWS: PlanRow[] = [
     damageType: 'physical',
     rawDamage: 'Knockback + Arrows',
     actions: [
-      { roleSlot: 'otReprisal', skill: 'Reprisal (OT)', timingNote: 'arrows' },
+      { roleSlot: 'otReprisal', skill: 'Reprisal (OT)', timingNote: 'For arrows' },
       { job: 'WHM', skill: 'Temperance', timingNote: 'off cd for P2' },
       { job: 'AST', skill: 'Sun Sign + Celestial Opposition', timingNote: 'off cd' },
       { job: 'SCH', skill: 'Whispering Dawn + Expedient', timingNote: 'for movement' },
@@ -265,6 +265,7 @@ export const JOB_BIBLES_PLAN_ROWS: PlanRow[] = [
     damageType: 'magic',
     rawDamage: '200,000',
     actions: [
+      { roleSlot: 'mtReprisal', skill: 'Reprisal (MT)', timingNote: 'Rep on confusion' },
       { job: 'WHM', skill: 'Divine Caress', carryOver: true },
       { job: 'AST', skill: 'Sun Sign' },
       { job: 'SCH', skill: 'Sacred Soil' },
@@ -313,8 +314,9 @@ export const JOB_BIBLES_PLAN_ROWS: PlanRow[] = [
     damageType: 'magic',
     rawDamage: '280,000',
     actions: [
-      { roleSlot: 'mtReprisal', skill: 'Reprisal (MT)' },
-      { roleSlot: 'otPartyMit', skill: 'Tank 90s (OT)' },
+      { roleSlot: 'mtPartyMit', skill: 'Tank 90s (MT)', timingNote: 'At 80% castbar' },
+      { roleSlot: 'mtReprisal', skill: 'Reprisal (MT)', timingNote: 'At 80% castbar' },
+      { roleSlot: 'otPartyMit', skill: 'Tank 90s (OT)', timingNote: 'At 80% castbar' },
       { job: 'WHM', skill: 'Plenary Indulgence + Asylum', timingNote: 'mid-cast / off cd' },
       { job: 'AST', skill: 'Collective Unconscious + Horoscope', timingNote: 'CU on cast' },
       { job: 'SCH', skill: 'Sacred Soil', timingNote: 'hold 3rd Soil for LoJ' },
@@ -380,8 +382,8 @@ export const JOB_BIBLES_PLAN_ROWS: PlanRow[] = [
     damageType: 'magic',
     rawDamage: '180,000 / set',
     actions: [
-      { roleSlot: 'mtPartyMit', skill: 'Tank 90s (MT)', timingNote: 'WAR/PLD' },
       { roleSlot: 'otReprisal', skill: 'Reprisal (OT)' },
+      { roleSlot: 'mtPartyMit', skill: 'Tank 90s (MT)', carryOver: true },
       { job: 'WHM', skill: 'Temperance', timingNote: 'Set 4' },
       { job: 'AST', skill: 'Macrocosmos', timingNote: 'manual trigger' },
       { job: 'SCH', skill: 'Seraphism', timingNote: '1st Past/Future' },
@@ -453,6 +455,7 @@ export const JOB_BIBLES_PLAN_ROWS: PlanRow[] = [
     damageType: 'magic',
     rawDamage: '260,000',
     actions: [
+      { roleSlot: 'mtPartyMit', skill: 'Tank 90s (MT)' },
       { roleSlot: 'otReprisal', skill: 'Reprisal (OT)' },
       { roleSlot: 'otPartyMit', skill: 'Tank 90s (OT)' },
       { job: 'WHM', skill: 'Asylum', timingNote: 'off cd' },
@@ -485,9 +488,9 @@ export const JOB_BIBLES_PLAN_ROWS: PlanRow[] = [
     actions: [
       { roleSlot: 'mtBusterMit', skill: '40% Mit + Short CD', target: 'Self' },
       { roleSlot: 'otBusterMit', skill: '40% Mit + Short CD', target: 'Self' },
-      { roleSlot: 'mtReprisal', skill: 'Reprisal (MT)' },
+      { roleSlot: 'mtReprisal', skill: 'Reprisal (MT)', timingNote: 'Early in cast' },
       { roleSlot: 'otReprisal', skill: 'Reprisal (OT)' },
-      { roleSlot: 'mtPartyMit', skill: 'Tank 90s (MT)' },
+      { roleSlot: 'mtPartyMit', skill: 'Tank 90s (MT)', timingNote: 'Early in cast' },
       { job: 'WHM', skill: 'Aquaveil + Benison', target: 'Tanks', timingNote: 'Benison + Aquaveil' },
       { job: 'AST', skill: 'Bole + Celestial Intersection', target: 'Tanks', timingNote: 'Bole MT + CO' },
       { job: 'SCH', skill: 'Excogitation + Sacred Soil', timingNote: 'Excog + Soil TB' },
@@ -611,7 +614,8 @@ export const JOB_BIBLES_PLAN_ROWS: PlanRow[] = [
     damageType: 'magic',
     rawDamage: 'Knockback + 230,000',
     actions: [
-      { roleSlot: 'mtPartyMit', skill: 'Tank LB3', timingNote: 'Vacuum Wave' },
+      { roleSlot: 'tankLb3', skill: 'Tank LB3', timingNote: 'LB Prio: WAR > DRK > PLD > GNB' },
+      { roleSlot: 'mtReprisal', skill: 'Reprisal (MT)', carryOver: true },
       { job: 'WHM', skill: 'Liturgy of the Bell', timingNote: 'after KB' },
       { job: 'AST', skill: 'Macrocosmos + Collective Unconscious', timingNote: 'after KB' },
       { job: 'SCH', skill: 'Sacred Soil + Seraphism', timingNote: 'LC start' },
@@ -659,7 +663,7 @@ export const JOB_BIBLES_PLAN_ROWS: PlanRow[] = [
     damageType: 'magic',
     rawDamage: 'Debuff Setup',
     actions: [
-      { roleSlot: 'otReprisal', skill: 'Reprisal (Exdeath)' },
+      { roleSlot: 'otReprisal', skill: 'Reprisal (OT)', target: 'Exdeath' },
       { job: 'AST', skill: 'Earthly Star', timingNote: 'Earthquake prep' },
       { job: 'SCH', skill: 'Spreadlo', timingNote: 'Spreadlo + Excog' },
       { job: 'SGE', skill: 'Zoe Shields', timingNote: 'before EQ cast ends' },
@@ -689,7 +693,7 @@ export const JOB_BIBLES_PLAN_ROWS: PlanRow[] = [
     damageType: 'unique',
     rawDamage: 'Party to 1 HP',
     actions: [
-      { roleSlot: 'mtPartyMit', skill: 'Tank 90s (MT)', timingNote: 'GNB/DRK' },
+      { roleSlot: 'mtPartyMit', skill: 'Tank 90s (MT)' },
       { job: 'WHM', skill: 'Benediction', timingNote: 'Accretion healer' },
       { job: 'AST', skill: 'Macrocosmos + Essential Dignity', timingNote: 'Accretion healer' },
       { job: 'SCH', skill: 'Lustrate + Sacred Soil', timingNote: 'Accretion healer' },
@@ -736,7 +740,7 @@ export const JOB_BIBLES_PLAN_ROWS: PlanRow[] = [
     damageType: 'magic',
     rawDamage: '190,000',
     actions: [
-      { roleSlot: 'otPartyMit', skill: 'Tank 90s (OT)', timingNote: 'GNB/DRK' },
+      { roleSlot: 'otPartyMit', skill: 'Tank 90s (OT)' },
       { job: 'WHM', skill: 'Temperance + Divine Caress', timingNote: 'Slap Happy 2' },
       { job: 'AST', skill: 'Sun Sign', timingNote: 'Slap Happy 2' },
       { job: 'SCH', skill: 'Expedient', timingNote: 'dodge Chaos frontal' },
@@ -855,8 +859,8 @@ export const JOB_BIBLES_PLAN_ROWS: PlanRow[] = [
     rawDamage: '250,000',
     actions: [
       { roleSlot: 'mtReprisal', skill: 'Reprisal (MT)' },
-      { roleSlot: 'otReprisal', skill: 'Reprisal (OT)' },
       { roleSlot: 'mtPartyMit', skill: 'Tank 90s (MT)' },
+      { roleSlot: 'otReprisal', skill: 'Reprisal (OT)' },
       { job: 'WHM', skill: 'Plenary Indulgence', timingNote: 'Stomp hits' },
       { job: 'AST', skill: 'Collective Unconscious', timingNote: 'Stomp hits' },
       { job: 'SCH', skill: 'Seraphism + Sacred Soil', timingNote: 'after 1st stack' },
@@ -872,6 +876,8 @@ export const JOB_BIBLES_PLAN_ROWS: PlanRow[] = [
     damageType: 'magic',
     rawDamage: '240,000',
     actions: [
+      { roleSlot: 'mtBusterMit', skill: 'Rampart + 90s + Short CD', target: 'Self', timingNote: '90s + Shorts for autos' },
+      { roleSlot: 'otPartyMit', skill: 'Tank 90s (OT)' },
       { job: 'WHM', skill: 'Temperance + Asylum', timingNote: 'mid-cast' },
       { job: 'AST', skill: 'Sun Sign', timingNote: 'after cast' },
       { job: 'SCH', skill: 'Spreadlo + Sacred Soil', timingNote: '60-80% castbar' },
@@ -931,7 +937,10 @@ export const JOB_BIBLES_PLAN_ROWS: PlanRow[] = [
     damageType: 'magic',
     rawDamage: '240,000',
     actions: [
-      { roleSlot: 'otPartyMit', skill: 'Tank 90s (WAR/PLD)' },
+      { roleSlot: 'mtSupport', skill: 'Short CD (to R1)', target: 'R1' },
+      { roleSlot: 'otPartyMit', skill: 'Tank 90s (OT)', timingNote: 'Shake It Off / Divine Veil' },
+      { roleSlot: 'otSupport', skill: 'Short CD (to R2)', target: 'R2' },
+      { roleSlot: 'otPartyMit', skill: 'Tank 90s (OT)', carryOver: true },
       { job: 'WHM', skill: 'Plenary Indulgence', timingNote: 'GC 3' },
       { job: 'AST', skill: 'Collective Unconscious', timingNote: 'GC 3' },
       { job: 'SCH', skill: 'Summon Seraph', timingNote: 'GC 3' },
@@ -974,6 +983,7 @@ export const JOB_BIBLES_PLAN_ROWS: PlanRow[] = [
     damageType: 'magic',
     rawDamage: '290,000',
     actions: [
+      { roleSlot: 'mtPartyMit', skill: 'Tank 90s (MT)', timingNote: 'Heart of Light / Dark Missionary' },
       { roleSlot: 'mtReprisal', skill: 'Reprisal (MT)' },
       { job: 'WHM', skill: 'Medica III + Afflatus Rapture' },
       { job: 'AST', skill: 'Horoscope + Celestial Opposition' },
@@ -992,6 +1002,7 @@ export const JOB_BIBLES_PLAN_ROWS: PlanRow[] = [
     damageType: 'magic',
     rawDamage: '230,000',
     actions: [
+      { roleSlot: 'mtPartyMit', skill: 'Tank 90s (MT)', timingNote: 'Shake It Off' },
       { job: 'WHM', skill: 'Plenary', carryOver: true },
       { job: 'AST', skill: 'Collective Unconscious', carryOver: true },
       { job: 'SCH', skill: 'Sacred Soil', carryOver: true },
@@ -1025,7 +1036,7 @@ export const JOB_BIBLES_PLAN_ROWS: PlanRow[] = [
     rawDamage: '310,000',
     actions: [
       { roleSlot: 'mtReprisal', skill: 'Reprisal (MT)' },
-      { roleSlot: 'otPartyMit', skill: 'Tank 90s (OT)' },
+      { roleSlot: 'otPartyMit', skill: 'Tank 90s (OT)', timingNote: 'When staff comes down' },
       { job: 'WHM', skill: 'Temperance + Plenary Indulgence', timingNote: 'mid-cast / end' },
       { job: 'AST', skill: 'Horoscope', timingNote: 'Star on "smile"' },
       { job: 'SCH', skill: 'Spreadlo + Sacred Soil + Fey Illumination', timingNote: 'Dawn on cast' },
@@ -1077,6 +1088,8 @@ export const JOB_BIBLES_PLAN_ROWS: PlanRow[] = [
     damageType: 'magic',
     rawDamage: '280,000',
     actions: [
+      { roleSlot: 'mtBusterMit', skill: 'Rampart + 90s + Short CD', target: 'Self', timingNote: 'Ramp + 90s + Shorts // Invuln flare' },
+      { roleSlot: 'otBusterMit', skill: '40% Mit + Short CD', target: 'Self', timingNote: '120s First 2 hits // Shorts flare' },
       { roleSlot: 'otReprisal', skill: 'Reprisal (OT)' },
       { job: 'WHM', skill: 'Divine Caress', timingNote: 'Benison MT', carryOver: true },
       { job: 'AST', skill: 'Sun Sign', timingNote: 'MT defensives', carryOver: true },
@@ -1141,6 +1154,8 @@ export const JOB_BIBLES_PLAN_ROWS: PlanRow[] = [
     damageType: 'magic',
     rawDamage: '310,000',
     actions: [
+      { roleSlot: 'mtPartyMit', skill: 'Tank 90s (MT)' },
+      { roleSlot: 'otReprisal', skill: 'Reprisal (OT)' },
       { roleSlot: 'mtReprisal', skill: 'Reprisal (MT)' },
       { roleSlot: 'otPartyMit', skill: 'Tank 90s (OT)' },
       { job: 'WHM', skill: 'Plenary Indulgence', timingNote: 'Plenary + Medica III' },
@@ -1191,6 +1206,8 @@ export const JOB_BIBLES_PLAN_ROWS: PlanRow[] = [
     damageType: 'magic',
     rawDamage: '280,000',
     actions: [
+      { roleSlot: 'mtBusterMit', skill: 'Rampart + Short CD', target: 'Self', timingNote: 'Ramp + Shorts // 120s Flare' },
+      { roleSlot: 'otBusterMit', skill: 'Rampart + Short CD', target: 'Self', timingNote: 'Ramp + Shorts // Invuln flare' },
       { job: 'WHM', skill: 'Benison MT + top up' },
       { job: 'AST', skill: 'Asp. Benefic MT' },
       { job: 'SCH', skill: 'Sacred Soil + Whispering Dawn' },
@@ -1253,8 +1270,8 @@ export const JOB_BIBLES_PLAN_ROWS: PlanRow[] = [
     damageType: 'magic',
     rawDamage: '320,000',
     actions: [
-      { roleSlot: 'mtReprisal', skill: 'Reprisal (MT)' },
-      { roleSlot: 'mtPartyMit', skill: 'Tank 90s (MT)' },
+      { roleSlot: 'mtReprisal', skill: 'Reprisal (MT)', carryOver: true },
+      { roleSlot: 'mtPartyMit', skill: 'Tank 90s (MT)', carryOver: true },
       { job: 'WHM', skill: 'Liturgy of the Bell + Asylum', timingNote: 'mid-cast / end' },
       { job: 'AST', skill: 'Collective Unconscious + Horoscope', timingNote: 'mid-cast / end' },
       { job: 'SCH', skill: 'Spreadlo + Sacred Soil + Fey Illumination + Expedient', timingNote: '80% castbar' },
@@ -1272,6 +1289,9 @@ export const JOB_BIBLES_PLAN_ROWS: PlanRow[] = [
     damageType: 'magic',
     rawDamage: '320,000',
     actions: [
+      { roleSlot: 'mtPartyMit', skill: 'Tank 90s (MT)' },
+      { roleSlot: 'otReprisal', skill: 'Reprisal (OT)' },
+      { roleSlot: 'otPartyMit', skill: 'Tank 90s (OT)' },
       { roleSlot: 'mtReprisal', skill: 'Reprisal (MT)', carryOver: true },
       { roleSlot: 'mtPartyMit', skill: 'Tank 90s (MT)', carryOver: true },
       { job: 'WHM', skill: 'Temperance', timingNote: 'after stack 1' },
@@ -1309,6 +1329,8 @@ export const JOB_BIBLES_PLAN_ROWS: PlanRow[] = [
     damageType: 'magic',
     rawDamage: '320,000',
     actions: [
+      { roleSlot: 'mtSupport', skill: 'Short CD (to R1)', target: 'R1' },
+      { roleSlot: 'otSupport', skill: 'Short CD (to R2)', target: 'R2' },
       { roleSlot: 'otReprisal', skill: 'Reprisal (OT)' },
       { roleSlot: 'otPartyMit', skill: 'Tank 90s (OT)' },
       { job: 'WHM', skill: 'Divine Caress', timingNote: 'Set 3 / Stack 3' },

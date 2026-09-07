@@ -100,7 +100,7 @@ export const LPDU_PLAN_ROWS: PlanRow[] = [
     damageType: 'magic',
     rawDamage: '260,000',
     actions: [
-      { roleSlot: 'mtReprisal', skill: 'Reprisal (MT)', timingNote: 'Late in castbar' },
+      { roleSlot: 'otReprisal', skill: 'Reprisal (OT)', timingNote: 'Late in castbar' },
       { job: 'WHM', skill: 'Asylum + Plenary', timingNote: 'Late castbar' },
       { job: 'AST', skill: 'Collective Unconscious', timingNote: 'Flash bubble' },
       { job: 'SCH', skill: 'Sacred Soil', timingNote: 'Late soil covers TB', carryOver: true },
@@ -120,7 +120,7 @@ export const LPDU_PLAN_ROWS: PlanRow[] = [
     actions: [
       { roleSlot: 'otBusterMit', skill: 'OT Tankbuster CDs', target: 'Self', timingNote: 'Kitchen Sink (40% + Rampart + Short CD)' },
       { roleSlot: 'mtSupport', skill: 'MT Single-Target Mit', target: 'OT', timingNote: 'Buddy Mit' },
-      { roleSlot: 'mtReprisal', skill: 'Reprisal (MT)', carryOver: true },
+      { roleSlot: 'otReprisal', skill: 'Reprisal (OT)', carryOver: true },
       { job: 'WHM', skill: 'Divine Benison', target: 'OT' },
       { job: 'AST', skill: 'Celestial Intersection', target: 'OT', timingNote: 'Card mits + CI OT' },
       { job: 'SCH', skill: 'Aetherpact (Tether)', target: 'OT', timingNote: 'Fairy tether OT' },
@@ -166,7 +166,7 @@ export const LPDU_PLAN_ROWS: PlanRow[] = [
     damageType: 'magic',
     rawDamage: 'Confetti Soaks',
     actions: [
-      { roleSlot: 'mtReprisal', skill: 'Reprisal (MT)', timingNote: 'Press after Gravitas to catch Confetti & LoJ' },
+      { roleSlot: 'mtReprisal', skill: 'Reprisal (MT)', timingNote: 'Rep @ 14s debuff' },
       { job: 'WHM', skill: 'Liturgy of the Bell', timingNote: 'Before 1st puddles' },
       { job: 'AST', skill: 'Horoscope + Celestial Opposition', timingNote: 'Walking back middle' },
       { job: 'SCH', skill: 'Summon Seraph + Fey Illum + Soil', timingNote: 'At least 3s on confetti' },
@@ -185,7 +185,7 @@ export const LPDU_PLAN_ROWS: PlanRow[] = [
     rawDamage: '165,000',
     actions: [
       { roleSlot: 'otReprisal', skill: 'Reprisal (OT)' },
-      { roleSlot: 'otPartyMit', skill: 'Tank 90s (OT)' },
+      { roleSlot: 'mtPartyMit', skill: 'Tank 90s (MT)', timingNote: 'Party mit @ 1s debuff' },
       { job: 'SCH', skill: 'Spreadlo + Sacred Soil', carryOver: true },
       { job: 'SGE', skill: 'Panhaima + Zoe E.Prog' },
       { roleSlot: 'physRanged', skill: 'Phys Ranged Mit', carryOver: true },
@@ -202,7 +202,7 @@ export const LPDU_PLAN_ROWS: PlanRow[] = [
     rawDamage: '260,000',
     actions: [
       { roleSlot: 'mtReprisal', skill: 'Reprisal (MT)' },
-      { roleSlot: 'mtPartyMit', skill: 'Tank 90s (MT)' },
+      { roleSlot: 'otPartyMit', skill: 'Tank 90s (OT)' },
       { job: 'WHM', skill: 'Asylum', timingNote: 'Off cooldown' },
       { job: 'AST', skill: 'Collective Unconscious', timingNote: 'For confetti / raidwide' },
       { job: 'SCH', skill: 'Sacred Soil', carryOver: true },
@@ -270,6 +270,7 @@ export const LPDU_PLAN_ROWS: PlanRow[] = [
     damageType: 'magic',
     rawDamage: '200,000',
     actions: [
+      { roleSlot: 'mtReprisal', skill: 'Reprisal (MT)', timingNote: 'Rep on confusion' },
       { job: 'WHM', skill: 'Divine Caress', carryOver: true },
       { job: 'AST', skill: 'Sun Sign' },
       { job: 'SCH', skill: 'Sacred Soil' },
@@ -306,6 +307,7 @@ export const LPDU_PLAN_ROWS: PlanRow[] = [
       { job: 'SCH', skill: 'Excogitation + Spreadlo', target: 'MT' },
       { job: 'SGE', skill: 'Holos + Taurochole + Haima', target: 'Tanks', timingNote: 'Holos early covers raidwide' },
       { roleSlot: 'melee1', skill: 'Feint', timingNote: 'On boss for buster' },
+      { roleSlot: 'otReprisal', skill: 'Reprisal (OT)' },
     ],
     notes: 'Heavy opening tankbuster. Pre-shield both tanks during transition.'
   },
@@ -316,6 +318,7 @@ export const LPDU_PLAN_ROWS: PlanRow[] = [
     damageType: 'magic',
     rawDamage: '280,000',
     actions: [
+      { roleSlot: 'mtPartyMit', skill: 'Tank 90s (MT)', timingNote: 'At 80% castbar' },
       { roleSlot: 'mtReprisal', skill: 'Reprisal (MT)', timingNote: 'At 80% castbar' },
       { roleSlot: 'otPartyMit', skill: 'Tank 90s (OT)', timingNote: 'At 80% castbar' },
       { job: 'WHM', skill: 'Plenary + Asylum', timingNote: 'Mid-cast' },
@@ -385,6 +388,7 @@ export const LPDU_PLAN_ROWS: PlanRow[] = [
     damageType: 'magic',
     rawDamage: '180,000 / set',
     actions: [
+      { roleSlot: 'otReprisal', skill: 'Reprisal (OT)' },
       { roleSlot: 'mtPartyMit', skill: 'Tank 90s (MT)', carryOver: true },
       { job: 'AST', skill: 'Macrocosmos manual resolve' },
       { job: 'SCH', skill: 'Sacred Soil 2', carryOver: true },
@@ -458,6 +462,7 @@ export const LPDU_PLAN_ROWS: PlanRow[] = [
     damageType: 'magic',
     rawDamage: '260,000',
     actions: [
+      { roleSlot: 'mtPartyMit', skill: 'Tank 90s (MT)' },
       { roleSlot: 'otReprisal', skill: 'Reprisal (OT)' },
       { roleSlot: 'otPartyMit', skill: 'Tank 90s (OT)' },
       { job: 'SCH', skill: 'Spreadlo + Sacred Soil' },
@@ -617,7 +622,7 @@ export const LPDU_PLAN_ROWS: PlanRow[] = [
     damageType: 'magic',
     rawDamage: 'Knockback + 230,000',
     actions: [
-      { roleSlot: 'tankLb3', skill: 'Tank LB3', timingNote: 'At the "W" of Vacuum Wave' },
+      { roleSlot: 'tankLb3', skill: 'Tank LB3', timingNote: 'LB Prio: WAR > DRK > PLD > GNB' },
       { roleSlot: 'mtReprisal', skill: 'Reprisal (MT)', carryOver: true },
       { job: 'WHM', skill: 'Plenary + Temperance', carryOver: true },
       { job: 'AST', skill: 'Collective Unconscious + Sun Sign', carryOver: true },
@@ -883,6 +888,8 @@ export const LPDU_PLAN_ROWS: PlanRow[] = [
     damageType: 'magic',
     rawDamage: '240,000',
     actions: [
+      { roleSlot: 'mtBusterMit', skill: 'Rampart + 90s + Short CD', target: 'Self', timingNote: '90s + Shorts for autos' },
+      { roleSlot: 'otPartyMit', skill: 'Tank 90s (OT)' },
       { job: 'WHM', skill: 'Plenary + Asylum' },
       { job: 'AST', skill: 'Collective Unconscious + Neutral Sect' },
       { job: 'SCH', skill: 'Spreadlo + Sacred Soil', timingNote: 'Late Soil 60-80%' },
@@ -946,6 +953,9 @@ export const LPDU_PLAN_ROWS: PlanRow[] = [
     damageType: 'magic',
     rawDamage: '240,000',
     actions: [
+      { roleSlot: 'mtSupport', skill: 'Short CD (to R1)', target: 'R1' },
+      { roleSlot: 'otPartyMit', skill: 'Tank 90s (OT)', timingNote: 'Shake It Off / Divine Veil' },
+      { roleSlot: 'otSupport', skill: 'Short CD (to R2)', target: 'R2' },
       { roleSlot: 'otPartyMit', skill: 'Tank 90s (OT)', carryOver: true },
       { job: 'WHM', skill: 'Divine Caress + Temperance' },
       { job: 'AST', skill: 'Neutral Sect + Sun Sign', carryOver: true },
@@ -990,6 +1000,7 @@ export const LPDU_PLAN_ROWS: PlanRow[] = [
     damageType: 'magic',
     rawDamage: '290,000',
     actions: [
+      { roleSlot: 'mtPartyMit', skill: 'Tank 90s (MT)', timingNote: 'Heart of Light / Dark Missionary' },
       { roleSlot: 'mtReprisal', skill: 'Reprisal (MT)' },
       { job: 'WHM', skill: 'Plenary + Asylum' },
       { job: 'AST', skill: 'Collective Unconscious' },
@@ -1007,6 +1018,7 @@ export const LPDU_PLAN_ROWS: PlanRow[] = [
     damageType: 'magic',
     rawDamage: '230,000',
     actions: [
+      { roleSlot: 'mtPartyMit', skill: 'Tank 90s (MT)', timingNote: 'Shake It Off' },
       { job: 'WHM', skill: 'Plenary', carryOver: true },
       { job: 'AST', skill: 'Collective Unconscious', carryOver: true },
       { job: 'SCH', skill: 'Sacred Soil', carryOver: true },
@@ -1092,6 +1104,8 @@ export const LPDU_PLAN_ROWS: PlanRow[] = [
     damageType: 'magic',
     rawDamage: '280,000',
     actions: [
+      { roleSlot: 'mtBusterMit', skill: 'Rampart + 90s + Short CD', target: 'Self', timingNote: 'Ramp + 90s + Shorts // Invuln flare' },
+      { roleSlot: 'otBusterMit', skill: '40% Mit + Short CD', target: 'Self', timingNote: '120s First 2 hits // Shorts flare' },
       { roleSlot: 'otReprisal', skill: 'Reprisal (OT)' },
       { job: 'WHM', skill: 'Divine Caress + Benison MT' },
       { job: 'AST', skill: 'Sun Sign + Asp. Benefic MT' },
@@ -1157,6 +1171,8 @@ export const LPDU_PLAN_ROWS: PlanRow[] = [
     damageType: 'magic',
     rawDamage: '310,000',
     actions: [
+      { roleSlot: 'mtPartyMit', skill: 'Tank 90s (MT)' },
+      { roleSlot: 'otReprisal', skill: 'Reprisal (OT)' },
       { roleSlot: 'mtReprisal', skill: 'Reprisal (MT)' },
       { roleSlot: 'otPartyMit', skill: 'Tank 90s (OT)' },
       { job: 'WHM', skill: 'Plenary + Medica III + Lily' },
@@ -1209,6 +1225,8 @@ export const LPDU_PLAN_ROWS: PlanRow[] = [
     damageType: 'magic',
     rawDamage: '280,000',
     actions: [
+      { roleSlot: 'mtBusterMit', skill: 'Rampart + Short CD', target: 'Self', timingNote: 'Ramp + Shorts // 120s Flare' },
+      { roleSlot: 'otBusterMit', skill: 'Rampart + Short CD', target: 'Self', timingNote: 'Ramp + Shorts // Invuln flare' },
       { job: 'WHM', skill: 'Benison MT + top up' },
       { job: 'AST', skill: 'Asp. Benefic MT' },
       { job: 'SCH', skill: 'Sacred Soil + Whispering Dawn' },
@@ -1291,6 +1309,9 @@ export const LPDU_PLAN_ROWS: PlanRow[] = [
     damageType: 'magic',
     rawDamage: '320,000',
     actions: [
+      { roleSlot: 'mtPartyMit', skill: 'Tank 90s (MT)' },
+      { roleSlot: 'otReprisal', skill: 'Reprisal (OT)' },
+      { roleSlot: 'otPartyMit', skill: 'Tank 90s (OT)' },
       { roleSlot: 'mtReprisal', skill: 'Reprisal (MT)', carryOver: true },
       { roleSlot: 'mtPartyMit', skill: 'Tank 90s (MT)', carryOver: true },
       { job: 'WHM', skill: 'Temperance', carryOver: true },
@@ -1329,6 +1350,8 @@ export const LPDU_PLAN_ROWS: PlanRow[] = [
     damageType: 'magic',
     rawDamage: '320,000',
     actions: [
+      { roleSlot: 'mtSupport', skill: 'Short CD (to R1)', target: 'R1' },
+      { roleSlot: 'otSupport', skill: 'Short CD (to R2)', target: 'R2' },
       { roleSlot: 'otReprisal', skill: 'Reprisal (OT)' },
       { roleSlot: 'otPartyMit', skill: 'Tank 90s (OT)' },
       { job: 'WHM', skill: 'Divine Caress + Temperance' },

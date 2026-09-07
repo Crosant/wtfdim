@@ -578,7 +578,7 @@ export const IKUYA_PLAN_ROWS: PlanRow[] = [
     damageType: 'magic',
     rawDamage: 'Knockback + 230,000',
     actions: [
-      { roleSlot: 'mtPartyMit', skill: 'Tank LB3', timingNote: 'Press at the "W" of Vacuum Wave' },
+      { roleSlot: 'tankLb3', skill: 'Tank LB3', timingNote: 'Press at the "W" of Vacuum Wave' },
       { roleSlot: 'mtReprisal', skill: 'Reprisal (MT)', carryOver: true },
       { job: 'WHM', skill: 'Plenary Indulgence', carryOver: true },
       { job: 'AST', skill: 'Collective Unconscious', carryOver: true },
@@ -829,13 +829,15 @@ export const IKUYA_PLAN_ROWS: PlanRow[] = [
     damageType: 'magic',
     rawDamage: '240,000',
     actions: [
+      { roleSlot: 'mtBusterMit', skill: 'Rampart + 90s + Short CD', target: 'Self', timingNote: 'For continuous autos (75k unmitigated)' },
+      { roleSlot: 'otSupport', skill: 'OT Single-Target Mit', target: 'MT', timingNote: 'Buddy Mit' },
       { job: 'WHM', skill: 'Plenary Indulgence' },
       { job: 'AST', skill: 'Collective Unconscious' },
       { job: 'SCH', skill: 'Spreadlo + Sacred Soil' },
       { job: 'SGE', skill: 'Kerachole + Philosophia + Holos' },
       { roleSlot: 'melee2', skill: 'Feint', timingNote: 'Ikuya: D2 Feint at phase start for tank autos' },
     ],
-    notes: 'Ikuya: D2 Feint deployed at phase start to dampen tank auto-attacks.'
+    notes: 'Ikuya: Kefka continuously autos main threat for ~75k unmitigated. MT mitigates with Rampart + 90s + Short CD, OT passes Buddy Mit. D2 Feint at phase start.'
   },
   {
     mechanicId: 'dmu-p4-02',
@@ -996,7 +998,7 @@ export const IKUYA_PLAN_ROWS: PlanRow[] = [
     actions: [
       { roleSlot: 'mtReprisal', skill: 'Reprisal (MT)', carryOver: true },
       { roleSlot: 'mtBusterMit', skill: '40% Mit + Short CD', target: 'Self' },
-      { roleSlot: 'otBusterMit', skill: 'Rampart + 90s + Short CD', target: 'Self' },
+      { roleSlot: 'otBusterMit', skill: '40% Mit + Short CD', target: 'Self' },
       { roleSlot: 'otSupport', skill: 'OT Buddy Mit', target: 'MT' },
       { job: 'WHM', skill: 'Plenary + Aquaveil OT + Benison MT', target: 'Tanks' },
       { job: 'AST', skill: 'Collective Unconscious + Bole MT + Exalt OT', target: 'Tanks' },
@@ -1106,8 +1108,8 @@ export const IKUYA_PLAN_ROWS: PlanRow[] = [
     damageType: 'physical',
     rawDamage: '150,000 x2',
     actions: [
-      { roleSlot: 'mtBusterMit', skill: 'Short CD', target: 'Self' },
-      { roleSlot: 'otBusterMit', skill: 'Short CD', target: 'Self' },
+      { roleSlot: 'mtBusterMit', skill: '90s + Short CD', target: 'Self' },
+      { roleSlot: 'otBusterMit', skill: '90s + Short CD', target: 'Self' },
       { roleSlot: 'mtReprisal', skill: 'Reprisal (MT)', carryOver: true },
       { roleSlot: 'otPartyMit', skill: 'Tank 90s (OT)', carryOver: true },
       { job: 'WHM', skill: 'Benison MT + Aquaveil OT' },
@@ -1138,6 +1140,9 @@ export const IKUYA_PLAN_ROWS: PlanRow[] = [
     damageType: 'magic',
     rawDamage: '280,000',
     actions: [
+      { roleSlot: 'mtBusterMit', skill: 'Rampart + 40% Mit', target: 'Self', timingNote: 'Press just before cast completes' },
+      { roleSlot: 'otBusterMit', skill: 'Rampart + 40% Mit', target: 'Self', timingNote: 'Press just before cast completes (+ Short Mit if PLD/DRK)' },
+      { roleSlot: 'otProvoke', skill: 'Provoke', target: 'Boss', timingNote: 'Provoke on Flare/Holy application' },
       { job: 'WHM', skill: 'Benison MT + top up' },
       { job: 'AST', skill: 'Asp. Benefic MT' },
       { job: 'SCH', skill: 'Sacred Soil + Whispering Dawn' },
@@ -1166,8 +1171,9 @@ export const IKUYA_PLAN_ROWS: PlanRow[] = [
     rawDamage: '150,000 x3',
     actions: [
       { roleSlot: 'otInvuln', skill: 'Invuln Carryover (Autos 1 & 2)', target: 'Self', carryOver: true },
-      { roleSlot: 'mtPartyMit', skill: 'Tank 90s (MT) (Auto 3)', timingNote: 'Share 3rd auto' },
-      { roleSlot: 'otPartyMit', skill: 'Tank 90s (OT) (Auto 3)', timingNote: 'Share 3rd auto' },
+      { roleSlot: 'mtBusterMit', skill: 'Rampart + Short Mit', target: 'Self', timingNote: 'Auto 3 share' },
+      { roleSlot: 'otBusterMit', skill: 'Rampart + Short Mit', target: 'Self', timingNote: 'Auto 3 share' },
+      { roleSlot: 'otInvuln', skill: 'Invuln Carryover (Autos 1 & 2)', target: 'Self', carryOver: true },
       { job: 'WHM', skill: 'Aquaveil OT + leftover Benisons' },
       { job: 'AST', skill: 'Leftover card mits MT + Exalt OT + CI' },
       { job: 'SCH', skill: 'Fey Blessing for autos' },
