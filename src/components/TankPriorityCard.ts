@@ -100,6 +100,7 @@ export function renderTankPriorityCard(props: TankPriorityCardProps): string {
       </div>
 
       <div class="tank-prio-footer">
+        <div class="tank-tip-item">💡 <strong>P3 Assignment Rule:</strong> PLD must be OT for P3+ (invuln timings will not align with PLD MT). MT starts on Exdeath and OT starts on Chaos; swap under boss during Decisive Battle castlock (MT holds Chaos, OT holds Exdeath).</div>
         <div class="tank-tip-item">💡 <strong>P5 Rule:</strong> The tank NOT invulning 1st must hold boss aggro to avoid receiving Holy.</div>
         <div class="tank-tip-item">💡 <strong>P5 Autos:</strong> Invulning tanks Provoke immediately on debuff application to solo autos 1 &amp; 2. Auto 3 is shared as invuln expires.</div>
       </div>

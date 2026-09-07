@@ -419,7 +419,7 @@ export const DMU_TIMELINE: Mechanic[] = [
     damageType: 'magic',
     rawDamage: '950,000',
     severity: 'tankbuster',
-    description: 'High damage shared or invulned tankbuster.'
+    description: 'First Thunder III double buster (LPDU Middeath standard). Both tanks take 1 hit with Rampart + 90s + Short CD (Wall Exdeath variant invulns).'
   },
   {
     id: 'dmu-p3-04',

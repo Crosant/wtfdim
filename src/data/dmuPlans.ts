@@ -553,14 +553,17 @@ const LPDU_ROWS: PlanRow[] = [
     damageType: 'magic',
     rawDamage: '950,000',
     actions: [
+      { roleSlot: 'mtBusterMit', skill: 'Rampart + 90s + Short CD', target: 'Self' },
+      { roleSlot: 'otBusterMit', skill: 'Rampart + 90s + Short CD', target: 'Self' },
+      { roleSlot: 'mtSupport', skill: 'MT Buddy Mit', target: 'OT' },
+      { roleSlot: 'otSupport', skill: 'OT Buddy Mit', target: 'MT' },
       { roleSlot: 'otReprisal', skill: 'Reprisal (OT)', carryOver: true },
-      { roleSlot: 'mtInvuln', skill: 'MT Invuln', target: 'Self' },
-      { job: 'WHM', skill: '2 Lilies + Tetra + Benison on invuln tank' },
+      { job: 'WHM', skill: '2 Lilies + Tetra + Benison' },
       { job: 'SCH', skill: 'Expedient', timingNote: 'At 80% castbar' },
       { job: 'SGE', skill: 'Holos', timingNote: 'Halfway through cast' },
       { roleSlot: 'caster', skill: 'Addle', target: 'Exdeath', timingNote: 'On Exdeath' },
     ],
-    notes: 'High damage shared or invulned tankbuster.'
+    notes: 'First Thunder III double buster (LPDU Middeath standard). Both tanks take 1 hit each, mitigated with Rampart + 90s + Short CD. (If using Wall Exdeath variant, MT invulns).'
   },
   {
     mechanicId: 'dmu-p3-04',
@@ -778,7 +781,12 @@ const LPDU_ROWS: PlanRow[] = [
     damageType: 'magic',
     rawDamage: '950,000',
     actions: [
+      { roleSlot: 'mtBusterMit', skill: 'Rampart + 90s + Short CD', target: 'Self' },
+      { roleSlot: 'otBusterMit', skill: 'Rampart + 90s + Short CD', target: 'Self' },
+      { roleSlot: 'mtSupport', skill: 'MT Buddy Mit', target: 'OT' },
+      { roleSlot: 'otSupport', skill: 'OT Buddy Mit', target: 'MT' },
       { roleSlot: 'mtReprisal', skill: 'Reprisal (MT)' },
+      { roleSlot: 'otReprisal', skill: 'Reprisal (OT)' },
       { job: 'WHM', skill: 'Temperance', timingNote: 'Set 5/6' },
       { job: 'AST', skill: 'Neutral Sect', timingNote: 'Set 5/6' },
       { job: 'SCH', skill: 'Spreadlo + Sacred Soil + Fey Illum' },
@@ -786,7 +794,7 @@ const LPDU_ROWS: PlanRow[] = [
       { roleSlot: 'melee1', skill: 'Feint', target: 'Chaos' },
       { roleSlot: 'caster', skill: 'Addle', target: 'Exdeath' },
     ],
-    notes: 'Heavy tankbuster sequence.'
+    notes: 'Fifth Thunder III double buster. Exdeath tank takes hit 1, Chaos tank takes hit 2. Both tanks mitigate with Rampart + 90s + Short CD + Buddy Mits.'
   },
   {
     mechanicId: 'dmu-p3-16',
@@ -825,8 +833,10 @@ const LPDU_ROWS: PlanRow[] = [
     actions: [
       { roleSlot: 'mtBusterMit', skill: '40% Mit + Short CD', target: 'Self' },
       { roleSlot: 'otBusterMit', skill: '40% Mit + Short CD', target: 'Self' },
+      { roleSlot: 'mtSupport', skill: 'MT Buddy Mit', target: 'Cotank', timingNote: 'Short cotank if TIL' },
+      { roleSlot: 'otSupport', skill: 'OT Buddy Mit', target: 'Cotank', timingNote: 'Short cotank if TIL' },
     ],
-    notes: '10th tether set (Look Upon Me and Despair). Both tanks mitigate with 40% + Short Mit.'
+    notes: '10th tether set (Look Upon Me and Despair). Both tanks mitigate with 40% (120s) + Short Mit, and pass Buddy Mit to the cotank if they are 3rd in Line (TIL).'
   },
   {
     mechanicId: 'dmu-p3-18',
@@ -1637,12 +1647,16 @@ const IKUYA_OVERRIDES: Record<string, { actions?: PlanRow['actions']; notes?: st
   },
   'dmu-p3-03': {
     actions: [
+      { roleSlot: 'mtBusterMit', skill: 'Rampart + 90s + Short CD', target: 'Self' },
+      { roleSlot: 'otBusterMit', skill: 'Rampart + 90s + Short CD', target: 'Self' },
+      { roleSlot: 'mtSupport', skill: 'MT Buddy Mit', target: 'OT' },
+      { roleSlot: 'otSupport', skill: 'OT Buddy Mit', target: 'MT' },
       { roleSlot: 'otReprisal', skill: 'Reprisal (OT)', carryOver: true },
       { job: 'SCH', skill: 'Expedient' },
       { job: 'SGE', skill: 'Holos' },
       { roleSlot: 'caster', skill: 'Addle', target: 'Exdeath', timingNote: 'Ikuya: Addle on Exdeath for Thunder III' },
     ],
-    notes: 'Ikuya: Addle explicitly assigned to Exdeath to cushion Thunder III tankbusters.'
+    notes: 'Ikuya: Both tanks take 1 hit with Rampart + 90s + Short CD. Addle explicitly assigned to Exdeath to cushion busters.'
   },
   'dmu-p3-04': {
     actions: [
@@ -1737,7 +1751,12 @@ const IKUYA_OVERRIDES: Record<string, { actions?: PlanRow['actions']; notes?: st
   },
   'dmu-p3-15': {
     actions: [
+      { roleSlot: 'mtBusterMit', skill: 'Rampart + 90s + Short CD', target: 'Self' },
+      { roleSlot: 'otBusterMit', skill: 'Rampart + 90s + Short CD', target: 'Self' },
+      { roleSlot: 'mtSupport', skill: 'MT Buddy Mit', target: 'OT' },
+      { roleSlot: 'otSupport', skill: 'OT Buddy Mit', target: 'MT' },
       { roleSlot: 'mtReprisal', skill: 'Reprisal (MT)' },
+      { roleSlot: 'otReprisal', skill: 'Reprisal (OT)' },
       { job: 'WHM', skill: 'Temperance' },
       { job: 'AST', skill: 'Neutral Sect' },
       { job: 'SCH', skill: 'Spreadlo + Sacred Soil + Fey Illumination' },
@@ -1745,7 +1764,7 @@ const IKUYA_OVERRIDES: Record<string, { actions?: PlanRow['actions']; notes?: st
       { roleSlot: 'melee2', skill: 'Feint', target: 'Chaos' },
       { roleSlot: 'caster', skill: 'Addle', target: 'Exdeath' },
     ],
-    notes: 'Ikuya: Feint on Chaos, Addle on Exdeath.'
+    notes: 'Ikuya: Both tanks take 1 hit with Rampart + 90s + Short CD. Feint on Chaos, Addle on Exdeath.'
   },
   'dmu-p3-16': {
     actions: [
@@ -2255,7 +2274,12 @@ const BIBLES_OVERRIDES: Record<string, { actions?: PlanRow['actions']; notes?: s
   },
   'dmu-p3-15': {
     actions: [
+      { roleSlot: 'mtBusterMit', skill: 'Rampart + 90s + Short CD', target: 'Self' },
+      { roleSlot: 'otBusterMit', skill: 'Rampart + 90s + Short CD', target: 'Self' },
+      { roleSlot: 'mtSupport', skill: 'MT Buddy Mit', target: 'OT' },
+      { roleSlot: 'otSupport', skill: 'OT Buddy Mit', target: 'MT' },
       { roleSlot: 'mtReprisal', skill: 'Reprisal (MT)' },
+      { roleSlot: 'otReprisal', skill: 'Reprisal (OT)' },
       { job: 'WHM', skill: 'Aquaveil + Benison', target: 'OT', timingNote: 'Benison + Aquaveil' },
       { job: 'AST', skill: 'Bole + Exaltation', target: 'Tanks', timingNote: 'Bole MT + Exalt OT' },
       { job: 'SCH', skill: 'Summon Seraph + Fey Illumination', timingNote: '3rd set' },
@@ -2263,7 +2287,7 @@ const BIBLES_OVERRIDES: Record<string, { actions?: PlanRow['actions']; notes?: s
       { roleSlot: 'melee2', skill: 'Feint', target: 'Chaos', timingNote: 'BH set 1 / TB' },
       { roleSlot: 'caster', skill: 'Addle', target: 'Exdeath', timingNote: 'TB after Kefka slam' },
     ],
-    notes: 'Bibles: Fifth Thunder TB set. Co-healers heavily support tanks through autos and buster hits.'
+    notes: 'Bibles: Fifth Thunder TB set. Both tanks mitigate with Rampart + 90s + Short CD. Co-healers heavily support tanks through autos and buster hits.'
   },
   'dmu-p3-16': {
     actions: [
@@ -2279,8 +2303,10 @@ const BIBLES_OVERRIDES: Record<string, { actions?: PlanRow['actions']; notes?: s
     actions: [
       { roleSlot: 'mtBusterMit', skill: '40% Mit + Short CD', target: 'Self' },
       { roleSlot: 'otBusterMit', skill: '40% Mit + Short CD', target: 'Self' },
+      { roleSlot: 'mtSupport', skill: 'MT Buddy Mit', target: 'Cotank', timingNote: 'Short cotank if TIL' },
+      { roleSlot: 'otSupport', skill: 'OT Buddy Mit', target: 'Cotank', timingNote: 'Short cotank if TIL' },
     ],
-    notes: 'Bibles: Black Holes IV (10th tether set). Both tanks mitigate with 40% + Short Mit.'
+    notes: 'Bibles: Black Holes IV (10th tether set). Both tanks mitigate with 40% + Short Mit (TIL cotank short mit).'
   },
   'dmu-p3-18': {
     actions: [
