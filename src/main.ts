@@ -338,7 +338,7 @@ function attachEventListeners(): void {
     }
 
     // Phase buttons in Quick-Cheat View
-    const qcvPhaseBtns = document.querySelectorAll('.phase-btn');
+    const qcvPhaseBtns = document.querySelectorAll('.qcv-phase-nav .phase-tab, .qcv-phase-nav .phase-btn');
     qcvPhaseBtns.forEach(btn => {
       btn.addEventListener('click', () => {
         const phaseId = parseInt(btn.getAttribute('data-phase') || '0', 10);

@@ -143,13 +143,15 @@ export function renderQuickCheatView(props: QuickCheatViewProps): string {
     { id: 0, label: 'All Phases', count: jobPhaseCounts[0] },
     { id: 1, label: 'P1: Kefka', count: jobPhaseCounts[1] },
     { id: 2, label: 'P2: Forsaken', count: jobPhaseCounts[2] },
-    { id: 3, label: 'P3: Chaos', count: jobPhaseCounts[3] },
-    { id: 4, label: 'P4: Neo Exdeath', count: jobPhaseCounts[4] },
+    { id: 3, label: 'P3: Chaos & Exdeath', count: jobPhaseCounts[3] },
+    { id: 4, label: 'P4: Kefka Says', count: jobPhaseCounts[4] },
     { id: 5, label: 'P5: Reimagined', count: jobPhaseCounts[5] },
   ].map(tab => `
     <button 
-      class="phase-btn ${props.currentPhase === tab.id ? 'active' : ''}" 
+      type="button"
+      class="phase-tab phase-btn ${props.currentPhase === tab.id ? 'active' : ''}" 
       data-phase="${tab.id}"
+      title="Filter by ${tab.label}"
     >
       <span>${tab.label}</span>
       <span class="phase-count-badge">${tab.count}</span>
@@ -252,9 +254,11 @@ export function renderQuickCheatView(props: QuickCheatViewProps): string {
           <!-- Mit Plan Selector -->
           <div class="cheat-control-group">
             <span class="cheat-control-label">Mit Plan:</span>
-            <select id="qcv-plan-select" class="plan-select" title="Choose mitigation plan">
-              ${planOptions}
-            </select>
+            <div class="cheat-plan-wrapper">
+              <select id="qcv-plan-select" class="plan-select" title="Choose mitigation plan">
+                ${planOptions}
+              </select>
+            </div>
           </div>
         </div>
 
@@ -284,7 +288,7 @@ export function renderQuickCheatView(props: QuickCheatViewProps): string {
 
       <!-- Phase Navigation -->
       <nav class="phase-nav qcv-phase-nav">
-        <div class="phase-tabs-wrapper">
+        <div class="phase-tabs">
           ${phaseNavTabs}
         </div>
       </nav>
