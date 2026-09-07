@@ -80,6 +80,28 @@ export function resolveTankBusterMit(skill: string, job: JobId): string {
     }
   }
 
+  // 3b. 90s + Short CD / Mit (WITHOUT Rampart): e.g. "90s + Short CD", "90s + Short Mit"
+  if ((s.includes('90s') || s.includes('defense')) && (s.includes('short') || s.includes('cd')) && !s.includes('rampart')) {
+    switch (job) {
+      case 'WAR': return 'Thrill + Bloodwhetting';
+      case 'PLD': return 'Bulwark + Holy Sheltron';
+      case 'DRK': return 'Dark Mind + TBN';
+      case 'GNB': return 'Camouflage + Corundum';
+      default: return '90s + Short CD';
+    }
+  }
+
+  // 3c. Just 90s Personal CD (WITHOUT Rampart or Party Mit)
+  if ((s.includes('90s') || s.includes('defense')) && !s.includes('rampart') && !s.includes('party')) {
+    switch (job) {
+      case 'WAR': return 'Thrill of Battle';
+      case 'PLD': return 'Bulwark';
+      case 'DRK': return 'Dark Mind';
+      case 'GNB': return 'Camouflage';
+      default: return '90s Mit';
+    }
+  }
+
   // 4. Rampart + 40% Mit
   if (s.includes('rampart') && s.includes('40%')) {
     switch (job) {

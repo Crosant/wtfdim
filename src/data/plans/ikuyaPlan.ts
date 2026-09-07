@@ -1029,6 +1029,8 @@ export const IKUYA_PLAN_ROWS: PlanRow[] = [
     damageType: 'magic',
     rawDamage: '280,000',
     actions: [
+      { roleSlot: 'mtBusterMit', skill: 'Rampart + Short CD', target: 'Self', timingNote: 'Press during Maddening cast' },
+      { roleSlot: 'otBusterMit', skill: 'Rampart + Short CD', target: 'Self', timingNote: 'Press during Maddening cast' },
       { roleSlot: 'otReprisal', skill: 'Reprisal (OT)' },
       { job: 'WHM', skill: 'Divine Caress' },
       { job: 'AST', skill: 'Sun Sign' },
@@ -1036,7 +1038,7 @@ export const IKUYA_PLAN_ROWS: PlanRow[] = [
       { job: 'SGE', skill: 'Kerachole' },
       { roleSlot: 'melee2', skill: 'Feint', timingNote: 'Ikuya: D2 Feint on MO1' },
     ],
-    notes: 'Ikuya: Melee 2 Feint assigned to Maddening Orchestra 1 and carries into the 2x Fell Forces autos.'
+    notes: 'Ikuya: Melee 2 Feint assigned to Maddening Orchestra 1 and carries into the 2x Fell Forces autos. Both tanks mitigate with Rampart + Short CD on cast.'
   },
   {
     mechanicId: 'dmu-p5-04b',
@@ -1047,8 +1049,7 @@ export const IKUYA_PLAN_ROWS: PlanRow[] = [
     actions: [
       { roleSlot: 'mtInvuln', skill: 'Invulnerability 1', target: 'Self', timingNote: 'Press just before debuff expires' },
       { roleSlot: 'mtProvoke', skill: 'Provoke', target: 'Boss', timingNote: 'Provoke on debuff application' },
-      { roleSlot: 'otBusterMit', skill: 'Rampart + Short Mit', target: 'Self' },
-      { roleSlot: 'otSupport', skill: 'OT Buddy Mit', target: 'MT' },
+      { roleSlot: 'otBusterMit', skill: 'Rampart + Short CD', target: 'Self', carryOver: true },
       { roleSlot: 'melee2', skill: 'Feint', carryOver: true },
     ],
     notes: 'Ikuya: Flare/Holy 1. Invuln 1 Tank (WAR > DRK > GNB > PLD) invulns just before debuff expires and Provokes on debuff to solo Fell Forces 2 autos. Tank 2 has main threat to not get Holy.'
@@ -1158,8 +1159,7 @@ export const IKUYA_PLAN_ROWS: PlanRow[] = [
     actions: [
       { roleSlot: 'otInvuln', skill: 'Invulnerability 2', target: 'Self', timingNote: 'Press just before debuff expires' },
       { roleSlot: 'otProvoke', skill: 'Provoke', target: 'Boss', timingNote: 'Provoke on debuff application' },
-      { roleSlot: 'mtBusterMit', skill: 'Rampart + 40% Mit', target: 'Self' },
-      { roleSlot: 'mtSupport', skill: 'MT Buddy Mit', target: 'OT' },
+      { roleSlot: 'mtBusterMit', skill: 'Rampart + 40% Mit', target: 'Self', carryOver: true },
     ],
     notes: 'Ikuya: Flare/Holy 2. Invuln 2 Tank (PLD > GNB > DRK > WAR) invulns just before debuff expires and Provokes on debuff to solo Fell Forces 4 autos 1 & 2. Auto 3 must be shared as invuln expires.'
   },
